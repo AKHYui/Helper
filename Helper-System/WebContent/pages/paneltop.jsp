@@ -49,6 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		boolean a;
 		if(rs.next()){  
 			a = true;
+			username = "admin";
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			response.sendRedirect("AdminPanel.jsp");
@@ -61,25 +62,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	conn.close();  
 %>
-<%
-            Date date = new Date();
-			SimpleDateFormat ft = new SimpleDateFormat("HH");
-			String hour = ft.format(date);
-			int hour_i = Integer.parseInt(hour);
-			String info = "";
-			if(hour_i<12){
-				info = "早上好！";
-			}else if(hour_i>12 && hour_i<14){
-				info = "中午好！";
-			}else if(hour_i>14 && hour_i<18){
-				info = "下午好！";
-			}else{
-				info = "晚上好！";
-			}
-        %>
-<div>
-	<h2><%=info %><%=username %></h2>
-</div>
+
+<%@page import="java.net.URLEncoder"%>
+ 
 
 </body>
 </html>

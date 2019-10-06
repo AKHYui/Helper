@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,17 +17,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; UTF-8">
 <title>管理员</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
 	$('#myModal').on('shown.bs.modal', function () {  //提示框必要使用
 	  	$('#myInput').trigger('focus')
 		});
 </script>
 </head>
-<% 
+<%
 	request.setCharacterEncoding("utf-8");
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
@@ -70,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <a class="dropdown-item" href="index.jsp">退出登录</a>
           <a class="dropdown-item" href="#">修改密码</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">关于</a>
+          <a class="dropdown-item" href="<%=basePath %>">回到主页</a>
         </div>
       </li>
     </ul>
@@ -82,6 +83,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </nav>
 </header>
 <body>
+<%
+	String se = session.getAttribute("username").toString();
+	String error = new String(basePath+"login-error.jsp");
+	if(se != "admin"){
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+    	response.setHeader("Location", error); 
+	}
+%>
 <div class="row">
 <div class="col-md-2">&nbsp;</div>
 <div class="col-md-8">
@@ -133,6 +142,7 @@ SELECT * from user;
 <!-- Modal -->
 <div class="modal fade" id="DeleteModal${row.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
+  	<form action="DeleteUserPage.jsp" method="get" class="form-horizontal"">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titleModalLabel">删除用户</h5>
@@ -141,14 +151,17 @@ SELECT * from user;
         </button>
       </div>
       <div class="modal-body">
-      <input type="hidden" class="form-control" id="recipient-name" value="${row.id}">
-        是否要删除用户${row.username}？这个操作是不可逆的！
+      <input type="hidden" class="form-control" id="recipient-name" name="id" value="${row.id}">
+        是否要删除用户${row.username}？这个操作是不可逆的！<br/>
+    ID：${row.id}<br/>
+        用户名：${row.username}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <button type="button" id="deleting" class="btn btn-danger">删除</button>
+        <input type="submit" id="deleting" value="删除" class="btn btn-danger"></input>
       </div>
     </div>
+    </form>
   </div>
 </div>
 <!--弹窗 -->
