@@ -58,10 +58,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<%= basePath%>">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">关于</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,17 +82,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 </nav>
 </header>
+ <!-- 状态栏 结束 -->
 <body>
 <%
-	String se = session.getAttribute("username").toString();
-	String error = new String(basePath+"login-error.jsp");
+	String se = session.getAttribute("username").toString();  //接收session 如果session错误
+	String error = new String(basePath+"login-error.jsp");	  //则返回到错误页面
 	if(se != "admin"){
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
     	response.setHeader("Location", error); 
 	}
 %>
 <div class="row">
-<div class="col-md-2">&nbsp;</div>
+<div class="col-md-2">&nbsp;</div> <!-- 左边的空白 -->
 <div class="col-md-8">
 <div>
 <h4><%=info %>管理员</h4><br/>
@@ -101,12 +102,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <h5>今天是<%=dy.format(date) %></h5>
 </div>
+<!-- 连接数据库进行全部用户的查找 -->
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" 
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from user;
 </sql:query>
+<!-- 连接数据库进行全部用户的查找 结束 -->
 <nav><!-- 滑动门 -->
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">用户管理</a>
@@ -114,9 +117,11 @@ SELECT * from user;
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
   </div>
 </nav>
+
 <div class="tab-content" id="nav-tabContent">
+<!-- 滑动门的第一个模块 -->
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-	<table class="table">
+	<table class="table"> <!-- 输出各用户信息的表格 -->
   		<thead>
     		<tr>
       		<th scope="col">ID</th>
@@ -125,6 +130,7 @@ SELECT * from user;
       		<th scope="col">手机号码</th>
       		<th scope="col">身份权限</th>
       		<th scope="col">删除操作</th>
+      		<th scope="col">修改信息</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
 		<c:forEach var="row" items="${result.rows}">
@@ -135,14 +141,17 @@ SELECT * from user;
       			<td><c:out value="${row.email}"/></td>
       			<td><c:out value="${row.phone}"/></td>
       			<td><c:out value="${row.permit}"/></td>
-      			<td><button type="button" data-whatever="${row.id}" class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal${row.id}" value="${row.id}">删除
+      			<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal${row.id}" value="${row.id}">删除
+</button></td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InsertModal${row.id}" value="${row.id}">修改
 </button></td>
 <!--弹窗 --> <!-- 无法用js实现将button数据传给模态框的操作 所以直接将模态框写在循环体里 每个模态框的id为DeleteModal+用户ID
 用户ID是独一无二的 所以每个模态框ID都是独一无二的 然后将row.id的数据交给隐藏的input以将id传送到删除操作-->
+<!-- 删除信息用的模态框 -->
 <!-- Modal -->
 <div class="modal fade" id="DeleteModal${row.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  	<form action="DeleteUserPage.jsp" method="get" class="form-horizontal"">
+  	<form action="<%=basePath %>DeleteUser" method="get" class="form-horizontal"">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titleModalLabel">删除用户</h5>
@@ -164,17 +173,52 @@ SELECT * from user;
     </form>
   </div>
 </div>
+<!-- 删除信息用的模态框 结束 -->
+<!-- 下面是修改信息用的模态框 -->
+<!-- Modal --> 
+<div class="modal fade" id="InsertModal${row.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  	<form action="<%=basePath %>UpdateUser" method="get" class="form-horizontal"">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleModalLabel">修改用户</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    	ID：${row.id}<br/>
+    	<div class="form-group">
+    	<input type="hidden" class="form-control" id="recipient-name" name="id" value="${row.id}">
+    	<label for="name" class="control-label col-sm-4 col-sm-offset-1">用户名：</label><br/>
+    	<input type="text" class="form-control" name="username" value="${row.username}" ><br/>
+    	<label for="password" class="control-label col-sm-4 col-sm-offset-1">密&nbsp;码：</label><br/>
+    	<input type="password" class="form-control" name="password" value="${row.password}"><br/>
+      	<label for="email" class="control-label col-sm-4 col-sm-offset-1">邮&nbsp;箱：</label><br/>
+      	<input type="text" class="form-control" name="email"  value="${row.email}"><br/>
+      	<label for="phone" class="control-label col-sm-4 col-sm-offset-1">手机号码：</label><br/>
+      	<input type="text" class="form-control" name="phone" value="${row.phone}"><br/>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <input type="submit" id="deleting" value="提交" class="btn btn-secondary"></input>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- 修改信息用的模态框 结束 -->
 <!--弹窗 -->
     			</tr>
 		</tbody>
 		</c:forEach>
 		</table>
   </div>
+  <!-- 滑动门的第一个模块 结束 -->
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
 </div>
-<div class="col-md-2">&nbsp;</div>
+<div class="col-md-2">&nbsp;</div><!-- 右边的空白 -->
 </div>
 </body>
 </html>

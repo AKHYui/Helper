@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 06/10/2019 16:25:42
+ Date: 09/10/2019 10:30:07
 */
 
 SET NAMES utf8mb4;
@@ -33,13 +33,13 @@ CREATE TABLE `user`  (
   `birth` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '生日',
   `permit` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员');
-INSERT INTO `user` VALUES (0009, 'user0', '', '000000', 0, '000', '1', '这个人很懒，暂时还没有介绍', '000', '用户');
-INSERT INTO `user` VALUES (0010, 'user1', '111111', '000000', 0, '000', '1', '这个人很懒，暂时还没有介绍', '000', '用户');
+INSERT INTO `user` VALUES (0015, 'user1', '1234567890', '1111111111@qq.com', 20, '17000000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
+INSERT INTO `user` VALUES (0016, 'user2', '1234567890', '1111111111@qq.com', 20, '13600000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
 
 SET FOREIGN_KEY_CHECKS = 1;

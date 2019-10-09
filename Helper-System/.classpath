@@ -16,5 +16,5 @@
 	<classpathentry kind="lib" path="C:/jre/lib/ext/mysql-connector-java-5.1.39-bin.jar"/>
 	<classpathentry kind="lib" path="C:/jre/lib/ext/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/jre/lib/ext/standard-1.1.2.jar"/>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
