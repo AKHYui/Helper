@@ -17,7 +17,7 @@
 <h2 class="text-center">互帮圈管理系统</h2>
 <div class="text-center">
 <a href="<%=basePath%>pages/index.jsp"><button class="btn btn-primary">管理员登陆</button></a><br/><hr>
-<a href="<%=basePath%>pages/index.jsp"><button class="btn btn-primary">用户登陆</button></a><br/><hr>
+<a href="<%=basePath%>pages/UserLogin.jsp"><button class="btn btn-primary">用户登陆</button></a><br/><hr>
 <a href="<%=basePath%>pages/register.jsp"><button class="btn btn-primary">用户注册</button></a><br/><hr>
 </div>
 </body>
