@@ -36,6 +36,15 @@
     <url-pattern>/Helper-System/SelectUser</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>delete_a</servlet-name>
+    <servlet-class>com.helper.DbServlet.DeleteArticle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>delete_a</servlet-name>
+    <url-pattern>/Helper-System/DeleteArticle</url-pattern>
+      </servlet-mapping>
+  
   <display-name>Helper-System</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

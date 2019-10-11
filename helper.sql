@@ -11,11 +11,29 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 10/10/2019 18:01:43
+ Date: 11/10/2019 17:44:55
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for article
+-- ----------------------------
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article`  (
+  `id` int(4) NOT NULL AUTO_INCREMENT COMMENT '帖子的id',
+  `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标题',
+  `text` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '内容',
+  `time` datetime NOT NULL COMMENT '发布时间',
+  `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '发布人',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of article
+-- ----------------------------
+INSERT INTO `article` VALUES (1, '测试题目1', '测试文章1', '2019-10-11 17:36:57', 'user1');
 
 -- ----------------------------
 -- Table structure for user
@@ -41,6 +59,5 @@ CREATE TABLE `user`  (
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员');
 INSERT INTO `user` VALUES (0015, 'user1', '1234567890', '1111111111@qq.com', 20, '17000000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
 INSERT INTO `user` VALUES (0016, 'user02', '1234567890', '1111111111@qq.com', 20, '13700000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
-INSERT INTO `user` VALUES (0017, 'user3', '1234567890', '123456@qq.com', 25, '13500000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
 
 SET FOREIGN_KEY_CHECKS = 1;
