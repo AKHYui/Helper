@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 11/10/2019 17:44:55
+ Date: 11/10/2019 18:35:42
 */
 
 SET NAMES utf8mb4;
@@ -57,7 +57,6 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员');
-INSERT INTO `user` VALUES (0015, 'user1', '1234567890', '1111111111@qq.com', 20, '17000000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
-INSERT INTO `user` VALUES (0016, 'user02', '1234567890', '1111111111@qq.com', 20, '13700000000', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
+INSERT INTO `user` VALUES (0015, 'user1', '1234567890', '123456789@qq.com', 20, '17012345678', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
 
 SET FOREIGN_KEY_CHECKS = 1;

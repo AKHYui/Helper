@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/DeleteArticle")
 public class DeleteArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://localhost:3306/helper";
-	static final String USER = "root";
-	static final String PASS = "root";
+	static final String JDBC_DRIVER = JdbcUtil.getDriver();
+	static final String DB_URL = JdbcUtil.getUrl();
+	static final String USER = JdbcUtil.getUser();
+	static final String PASS = JdbcUtil.getPwd();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");  //这里接收的ID是发布的文章的ID
