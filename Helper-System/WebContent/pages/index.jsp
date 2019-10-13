@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<div class="container">
         <h2 class="text-center">管理员登陆</h2>
-        <form action="paneltop.jsp" method="post" class="form-horizontal">
+        <form action="<%=basePath %>pages/paneltop.jsp" method="post" class="form-horizontal">
             <div class="form-group">
                 <label for="username" class="control-label col-sm-2 col-sm-offset-1">用户名：</label>
                 <div class="col-sm-6">
@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <input type="submit" value="登录" class="btn btn-primary">
                 <input type="reset" value="重置" class="btn btn-primary">
             </div>
+            
         </form>
     </div>
 </body>

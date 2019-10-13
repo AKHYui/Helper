@@ -106,7 +106,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">用户管理</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">发布管理</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">评论管理</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-fourth" role="tab" aria-controls="nav-contact" aria-selected="false">公告管理</a>
   </div>
 </nav>
 
@@ -120,7 +121,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@ include file="../module/article_table.jsp"%>
   </div>
   <!-- 滑动门第二个模块 结束 -->
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+  <!-- 滑动门第三个模块 -->
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+	<%@ include file="../module/comment_table.jsp"%>
+  </div>
+  <!-- 滑动门第三个模块 结束 -->
+  <!-- 滑动门第四个模块 -->
+  <div class="tab-pane fade" id="nav-fourth" role="tabpanel" aria-labelledby="nav-fourth-tab">
+  	<%@ include file="../module/bulletin_table.jsp"%>
+  </div>
+  <!-- 滑动门第四个模块 结束 -->
 </div>
 </div>
 <div class="col-md-2">&nbsp;</div><!-- 右边的空白 -->

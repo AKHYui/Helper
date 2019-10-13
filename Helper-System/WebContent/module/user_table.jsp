@@ -10,7 +10,6 @@
 SELECT * from user;
 </sql:query>
 <!-- 连接数据库进行全部用户的查找 结束 -->
-
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 	<table class="table"> <!-- 输出各用户信息的表格 -->
   		<thead>
@@ -97,9 +96,12 @@ SELECT * from user;
     </form>
   </div>
 </div>
+
 <!-- 修改信息用的模态框 结束 -->
 <!--弹窗 -->
     			</tr>
+    			
 		</tbody>
 		</c:forEach>
+		<div class="text-right"><a href="register.jsp"><button class="btn btn-primary">添加用户</button></a></div>
 		</table>

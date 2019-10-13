@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -35,6 +36,7 @@ public class InsertUser extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String sex = request.getParameter("sex");
 		String jieshao = request.getParameter("jieshao");
+		ResultSet rs1;
 		int rs = 0;
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
@@ -46,21 +48,41 @@ public class InsertUser extends HttpServlet {
 		HttpSession session = request.getSession();
 		try {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			String sql = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit) VALUES ('"+username+"','"+password+"','"+email+"',"+age+",'"+phone+"','"+sex+"','"+jieshao+"','"+birth+"','用户')";
-			stmt = conn.createStatement();
-			rs = stmt.executeUpdate(sql);
-			if (rs != 0) {
+			String sql = "select * from user where username='"+username+"'";
+			stmt = conn.createStatement();  //将sql语句发送到数据库中
+			rs1=stmt.executeQuery(sql);  //对数据库的查询操作，一般需要返回查询结果
+			if(rs1.next()){
 				try {
-					response.getWriter().write("注册成功");
+					response.getWriter().write("该账号已存在，请重新注册，3秒钟跳回注册页面");
+					response.setHeader("refresh", "3;url="+basePath+"pages/register.jsp");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				conn.close();
+			}else{
+				try {
+					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+					String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit) VALUES ('"+username+"','"+password+"','"+email+"',"+age+",'"+phone+"','"+sex+"','"+jieshao+"','"+birth+"','用户')";
+					stmt = conn.createStatement();
+					rs = stmt.executeUpdate(sql1);
+					if (rs != 0) {
+						try {
+							response.getWriter().write("添加用户成功，3秒钟跳回操作面板");
+							response.setHeader("refresh", "3;url="+basePath+"pages/AdminPanel.jsp");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						conn.close();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 	}
 }
