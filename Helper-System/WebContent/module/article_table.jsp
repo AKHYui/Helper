@@ -6,7 +6,7 @@
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
 <sql:query dataSource="${article}" var="result">
-SELECT * from article;
+SELECT * from article order by id desc;
 </sql:query>
 <!-- 连接数据库进行全部帖子的查找 结束 -->
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">

@@ -7,7 +7,7 @@
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
 <sql:query dataSource="${snapshot}" var="result">
-SELECT * from user;
+SELECT * from user order by id desc;
 </sql:query>
 <!-- 连接数据库进行全部用户的查找 结束 -->
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -23,7 +23,7 @@ SELECT * from user;
       		<th scope="col">修改信息</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
-		<c:forEach var="row" items="${result.rows}">
+		<c:forEach begin="0" end="7" var="row" items="${result.rows}">
 		<tbody>
     		<tr>
       			<td><c:out value="${row.id}"/></td>
@@ -105,3 +105,5 @@ SELECT * from user;
 		</c:forEach>
 		<div class="text-right"><a href="register.jsp"><button class="btn btn-primary">添加用户</button></a></div>
 		</table>
+		
+		<div class="text-right"><a href="../FuncRewrite"><button class="btn btn-primary">查看更多</button></a></div>

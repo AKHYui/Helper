@@ -7,6 +7,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%
+	String se = session.getAttribute("username").toString();  //接收session 如果session错误
+	String error = new String(basePath+"login-error.jsp");	  //则返回到错误页面
+	if(se != "admin"){
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+    	response.setHeader("Location", error); 
+	}
+%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -65,6 +73,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          完整功能
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=1">用户管理</a>
+          <a class="dropdown-item" href="#">发布管理</a>
+          <a class="dropdown-item" href="#">评论管理</a>
+          <a class="dropdown-item" href="#">公告管理</a>
+          
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           更多功能
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -84,14 +103,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </header>
  <!-- 状态栏 结束 -->
 <body>
-<%
-	String se = session.getAttribute("username").toString();  //接收session 如果session错误
-	String error = new String(basePath+"login-error.jsp");	  //则返回到错误页面
-	if(se != "admin"){
-		response.setStatus(response.SC_MOVED_TEMPORARILY);
-    	response.setHeader("Location", error); 
-	}
-%>
 <div class="row">
 <div class="col-md-2">&nbsp;</div> <!-- 左边的空白 -->
 <div class="col-md-8">

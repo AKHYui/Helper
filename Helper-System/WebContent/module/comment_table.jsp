@@ -5,7 +5,7 @@
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
 <sql:query dataSource="${comment}" var="result">
-SELECT * from comment;
+SELECT * from comment order by id desc;
 </sql:query>
 <!-- 连接数据库进行全部评论的查找 结束 -->
 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
