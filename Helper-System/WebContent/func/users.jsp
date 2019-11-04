@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		String sessionusers = session.getAttribute("sessionusers").toString();
 		int begin_s = Integer.parseInt(session.getAttribute("begin").toString());
 		int end_s = Integer.parseInt(session.getAttribute("end").toString());
+		int page_s = Integer.parseInt(session.getAttribute("page").toString());
 		String error = new String(basePath+"login-error.jsp");
 		if(sessionusers != "users"){
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
@@ -65,14 +66,6 @@ SELECT * from user order by id;
 </tr>
 </tbody>
 </c:forEach>
-<tr>
-<td colspan="3" align="left"><a href="<%= basePath%>PageDown?begin=<%= begin_s%>&end=<%= end_s%>">上一页</a></td>
-<td colspan="4" align="right"><a href="<%= basePath%>PageUp?begin=<%= begin_s%>&end=<%= end_s%>">下一页</a></td>
-</tr>
-</table>
-</div>
-<div class="col-md-2">&nbsp;</div> <!-- 右边的空白 -->
-</div>
 <!-- 查找总行数 -->
 <sql:setDataSource var="cou" driver="com.mysql.jdbc.Driver" 
      url="jdbc:mysql://localhost:3306/helper"
@@ -80,8 +73,16 @@ SELECT * from user order by id;
 <sql:query dataSource="${cou}" var="res">
 SELECT COUNT(*) total FROM user;
 </sql:query>
+<tr>
 <c:forEach var="row" items="${res.rows}">
-${row.total}
+<td colspan="2" align="left"><a href="<%= basePath%>PageDown?begin=<%= begin_s%>&end=<%= end_s%>">上一页</a></td>
+<td colspan="2" align="center"><%=page_s %></td>
+<td colspan="3" align="right"><a href="<%= basePath%>PageUp?begin=<%= begin_s%>&end=<%= end_s%>&all=${row.total}">下一页</a></td>
 </c:forEach>
+</tr>
+</table>
+</div>
+<div class="col-md-2">&nbsp;</div> <!-- 右边的空白 -->
+</div>
 </body>
 </html>

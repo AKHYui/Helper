@@ -27,11 +27,15 @@ public class PageDown extends HttpServlet {
 		
 		int begin_i = Integer.parseInt(request.getParameter("begin"));
 		int end_i = Integer.parseInt(request.getParameter("end"));
-		if (begin_i == 0 && end_i == 4){
-			begin = "0";
-			end = "4";
+		int page_i = 1;
+		if (begin_i == 1 && end_i == 5){
+			begin = "1";
+			end = "5";
+			page_i = end_i/5;
+			String page = String.valueOf(page_i);
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
+			session.setAttribute("page", page);
 			try {
 				response.sendRedirect(basePath+"func/users.jsp");
 			} catch (IOException e) {
@@ -44,10 +48,13 @@ public class PageDown extends HttpServlet {
 		}else{
 			begin_i = begin_i-5;
 			end_i = end_i-5;
+			page_i = end_i/5;
+			String page = String.valueOf(page_i);
 			begin = String.valueOf(begin_i);
 			end = String.valueOf(end_i);
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
+			session.setAttribute("page", page);
 			try {
 				response.sendRedirect(basePath+"func/users.jsp");
 			} catch (IOException e) {

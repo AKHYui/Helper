@@ -26,11 +26,13 @@ public class FuncRewrite extends HttpServlet {
 				e1.printStackTrace();
 			}
 			String sessionusers = "users";
-			String begin = "0";
-			String end = "4";
+			String begin = "1";
+			String end = "5";
+			String page = "1";
 			session.setAttribute("sessionusers", sessionusers);
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
+			session.setAttribute("page", page);
 			try {
 				response.sendRedirect(basePath+"func/users.jsp");
 			} catch (IOException e) {

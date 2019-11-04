@@ -23,7 +23,7 @@ SELECT * from user order by id desc;
       		<th scope="col">修改信息</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
-		<c:forEach begin="0" end="7" var="row" items="${result.rows}">
+		<c:forEach begin="0" end="4" var="row" items="${result.rows}">
 		<tbody>
     		<tr>
       			<td><c:out value="${row.id}"/></td>
@@ -106,4 +106,4 @@ SELECT * from user order by id desc;
 		<div class="text-right"><a href="register.jsp"><button class="btn btn-primary">添加用户</button></a></div>
 		</table>
 		
-		<div class="text-right"><a href="../FuncRewrite"><button class="btn btn-primary">查看更多</button></a></div>
+
