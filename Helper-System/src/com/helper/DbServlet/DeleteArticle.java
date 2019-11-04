@@ -12,13 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.db.UseJdbc;
+
 @WebServlet("/DeleteArticle")
 public class DeleteArticle extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	static final String JDBC_DRIVER = JdbcUtil.getDriver();
-	static final String DB_URL = JdbcUtil.getUrl();
-	static final String USER = JdbcUtil.getUser();
-	static final String PASS = JdbcUtil.getPwd();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");  //这里接收的ID是发布的文章的ID
@@ -27,27 +24,28 @@ public class DeleteArticle extends HttpServlet {
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
-		Connection conn = null;
-		Statement stmt = null;
+		//Connection conn = null;
+		//Statement stmt = null;
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		try {
+		/*try {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			String sql = "DELETE FROM article WHERE Id = '" + id + "'";
 			stmt = conn.createStatement();
-			rs = stmt.executeUpdate(sql);
+			rs = stmt.executeUpdate(sql);*/
+			rs = UseJdbc.delar(id);
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
 				String site = new String(basePath + "pages/AdminPanel.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
-				conn.close();
+				//conn.close();
 			}
-		} catch (SQLException e) {
+		} /*catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
