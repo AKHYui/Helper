@@ -20,7 +20,7 @@ SELECT * from user order by id desc;
       		<th scope="col">手机号码</th>
       		<th scope="col">身份权限</th>
       		<th scope="col">删除操作</th>
-      		<th scope="col">修改信息</th>
+      		<th scope="col">查看信息</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
 		<c:forEach begin="0" end="4" var="row" items="${result.rows}">
@@ -33,7 +33,7 @@ SELECT * from user order by id desc;
       			<td><c:out value="${row.permit}"/></td>
       			<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal${row.id}" value="${row.id}">删除
 </button></td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InsertModal${row.id}" value="${row.id}">修改
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InsertModal${row.id}" value="${row.id}">查看
 </button></td>
 <!--弹窗 --> <!-- 无法用js实现将button数据传给模态框的操作 所以直接将模态框写在循环体里 每个模态框的id为DeleteModal+用户ID
 用户ID是独一无二的 所以每个模态框ID都是独一无二的 然后将row.id的数据交给隐藏的input以将id传送到删除操作-->
@@ -71,7 +71,7 @@ SELECT * from user order by id desc;
   	<form action="../UpdateUser" method="get" class="form-horizontal"">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleModalLabel">修改用户</h5>
+        <h5 class="modal-title" id="titleModalLabel">查看信息</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

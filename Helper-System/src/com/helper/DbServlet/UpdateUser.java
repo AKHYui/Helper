@@ -1,5 +1,6 @@
 package com.helper.DbServlet;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -42,7 +43,21 @@ public class UpdateUser extends HttpServlet {
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
-				String site = new String(basePath + "pages/AdminPanel.jsp");
+				String sessionusers = "users";
+				String begin = "1";
+				String end = "5";
+				String page = "1";
+				session.setAttribute("sessionusers", sessionusers);
+				session.setAttribute("begin", begin);
+				session.setAttribute("end", end);
+				session.setAttribute("page", page);
+				try {
+					response.sendRedirect(basePath+"func/users.jsp");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				String site = new String(basePath + "func/users.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 				conn.close();

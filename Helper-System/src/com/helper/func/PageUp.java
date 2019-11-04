@@ -43,6 +43,23 @@ public class PageUp extends HttpServlet {
 			String site = new String(basePath + "func/users.jsp");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
+		}else if(all_i==end_i+1){
+			page_i = end_i/5;
+			String page = String.valueOf(page_i);
+			String begin = String.valueOf(begin_i);
+			String end = String.valueOf(end_i);
+			session.setAttribute("begin", begin);
+			session.setAttribute("end", end);
+			session.setAttribute("page", page);
+			try {
+				response.sendRedirect(basePath+"func/users.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String site = new String(basePath + "func/users.jsp");
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", site);
 		}else{
 		begin_i = begin_i+5;
 		end_i = end_i+5;

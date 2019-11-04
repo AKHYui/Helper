@@ -25,10 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; UTF-8">
 <title>管理员</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="./js/bootstrap.min.css">
+<script src="./js/jquery-3.3.1.slim.min.js.下载"></script>
+<script src="./js/popper.min.js.下载"></script>
+<script src="./js/bootstrap.min.js.下载"></script>
 <script type="text/javascript">
 	$('#myModal').on('shown.bs.modal', function () {  //提示框必要使用
 	  	$('#myInput').trigger('focus')
