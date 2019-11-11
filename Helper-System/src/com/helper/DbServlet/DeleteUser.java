@@ -16,12 +16,7 @@ import com.db.UseJdbc;
 
 @WebServlet("/DeleteUser")
 
-public class DeleteUser extends HttpServlet {
-	/*private static final long serialVersionUID = 1L;
-	static final String JDBC_DRIVER = JdbcUtil.getDriver();
-	static final String DB_URL = JdbcUtil.getUrl();
-	static final String USER = JdbcUtil.getUser();
-	static final String PASS = JdbcUtil.getPwd();*/
+public class DeleteUser extends HttpServlet {  //删除用户
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
@@ -30,8 +25,6 @@ public class DeleteUser extends HttpServlet {
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
-		//Connection conn = null;
-		//Statement stmt = null;
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();

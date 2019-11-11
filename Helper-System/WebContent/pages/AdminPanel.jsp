@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=1">用户管理</a>
-          <a class="dropdown-item" href="#">发布管理</a>
+          <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=2">发布管理</a>
           <a class="dropdown-item" href="#">评论管理</a>
           <a class="dropdown-item" href="#">公告管理</a>
           

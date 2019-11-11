@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.db.UseJdbc;
+
 @WebServlet("/InsertUser")
-public class InsertUser extends HttpServlet {
+public class InsertUser extends HttpServlet {  //ÃÌº””√ªß
 	private static final long serialVersionUID = 1L;
 	static final String JDBC_DRIVER = JdbcUtil.getDriver();
 	static final String DB_URL = JdbcUtil.getUrl();
@@ -36,7 +38,7 @@ public class InsertUser extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String sex = request.getParameter("sex");
 		String jieshao = request.getParameter("jieshao");
-		ResultSet rs1;
+		ResultSet rs1 = null;
 		int rs = 0;
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path

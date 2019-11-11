@@ -14,13 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.db.UseJdbc;
+
 @WebServlet("/InsertBulletin")
-public class InsertBulletin extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	static final String JDBC_DRIVER = JdbcUtil.getDriver();
-	static final String DB_URL = JdbcUtil.getUrl();
-	static final String USER = JdbcUtil.getUser();
-	static final String PASS = JdbcUtil.getPwd();
+public class InsertBulletin extends HttpServlet {  //添加公告
 	protected void doGet(HttpServletRequest request, HttpServletResponse response){
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -36,27 +33,17 @@ public class InsertBulletin extends HttpServlet {
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
-		Connection conn = null;
-		Statement stmt = null;
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			String sql = "INSERT INTO bulletin (text,time) VALUES ('"+text+"','"+time+"') ";
-			stmt = conn.createStatement();
-			rs = stmt.executeUpdate(sql);
+		rs = UseJdbc.inbu(text, time);
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
 				String site = new String(basePath + "pages/AdminPanel.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
-				conn.close();
+				//conn.close();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
