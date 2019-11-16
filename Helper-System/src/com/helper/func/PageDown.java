@@ -27,6 +27,8 @@ public class PageDown extends HttpServlet {
 		
 		int begin_i = Integer.parseInt(request.getParameter("begin"));
 		int end_i = Integer.parseInt(request.getParameter("end"));
+		String uid = request.getParameter("uid");
+		String base;
 		int page_i = 1;
 		if (begin_i == 1 && end_i == 5){
 			begin = "1";
@@ -36,13 +38,14 @@ public class PageDown extends HttpServlet {
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
 			session.setAttribute("page", page);
+			base = PageDet.pagefun(uid);
 			try {
-				response.sendRedirect(basePath+"func/users.jsp");
+				response.sendRedirect(basePath+base);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String site = new String(basePath + "func/users.jsp");
+			String site = new String(basePath + base);
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
 		}else{
@@ -55,13 +58,14 @@ public class PageDown extends HttpServlet {
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
 			session.setAttribute("page", page);
+			base = PageDet.pagefun(uid);
 			try {
-				response.sendRedirect(basePath+"func/users.jsp");
+				response.sendRedirect(basePath+base);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String site = new String(basePath + "func/users.jsp");
+			String site = new String(basePath + base);
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
 		}

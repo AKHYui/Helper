@@ -25,6 +25,8 @@ public class PageUp extends HttpServlet {
 		int begin_i = Integer.parseInt(request.getParameter("begin"));
 		int end_i = Integer.parseInt(request.getParameter("end"));
 		int all_i = Integer.parseInt(request.getParameter("all"));
+		String uid = request.getParameter("uid");
+		String base;
 		int page_i = 1;
 		if(all_i<end_i){
 			String begin = String.valueOf(begin_i);
@@ -34,13 +36,14 @@ public class PageUp extends HttpServlet {
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
 			session.setAttribute("page", page);
+			base = PageDet.pagefun(uid);
 			try {
-				response.sendRedirect(basePath+"func/users.jsp");
+				response.sendRedirect(basePath+base);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String site = new String(basePath + "func/users.jsp");
+			String site = new String(basePath + base);
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
 		}else if(all_i==end_i+1){
@@ -51,13 +54,14 @@ public class PageUp extends HttpServlet {
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
 			session.setAttribute("page", page);
+			base = PageDet.pagefun(uid);
 			try {
-				response.sendRedirect(basePath+"func/users.jsp");
+				response.sendRedirect(basePath+base);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String site = new String(basePath + "func/users.jsp");
+			String site = new String(basePath + base);
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
 		}else{
@@ -70,13 +74,14 @@ public class PageUp extends HttpServlet {
 		session.setAttribute("begin", begin);
 		session.setAttribute("end", end);
 		session.setAttribute("page", page);
+		base = PageDet.pagefun(uid);
 		try {
-			response.sendRedirect(basePath+"func/users.jsp");
+			response.sendRedirect(basePath+base);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String site = new String(basePath + "func/users.jsp");
+		String site = new String(basePath + base);
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
 		response.setHeader("Location", site);
 	}

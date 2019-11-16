@@ -151,9 +151,9 @@ SELECT COUNT(*) total FROM user;
 </sql:query>
 <tr>
 <c:forEach var="row" items="${res.rows}">
-<td colspan="2" align="left"><a href="<%= basePath%>PageDown?begin=<%= begin_s%>&end=<%= end_s%>">上一页</a></td>
+<td colspan="2" align="left"><a href="<%= basePath%>PageDown?begin=<%= begin_s%>&end=<%= end_s%>&uid=1">上一页</a></td>
 <td colspan="2" align="center">第<%=page_s %>页</td>
-<td colspan="3" align="right"><a href="<%= basePath%>PageUp?begin=<%= begin_s%>&end=<%= end_s%>&all=${row.total}">下一页</a></td>
+<td colspan="3" align="right"><a href="<%= basePath%>PageUp?begin=<%= begin_s%>&end=<%= end_s%>&all=${row.total}&uid=1">下一页</a></td>
 </c:forEach>
 </tr>
 </table>
