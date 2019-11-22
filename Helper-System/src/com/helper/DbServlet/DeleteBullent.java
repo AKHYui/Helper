@@ -29,7 +29,7 @@ public class DeleteBullent extends HttpServlet {  //É¾³ý¹«¸æ
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
-				String site = new String(basePath + "pages/AdminPanel.jsp");
+				String site = new String(basePath + "func/bullent.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 				//conn.close();

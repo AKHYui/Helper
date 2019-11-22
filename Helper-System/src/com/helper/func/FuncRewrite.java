@@ -57,7 +57,43 @@ public class FuncRewrite extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String site = new String(basePath + "func/users.jsp");
+			String site = new String(basePath + "func/article.jsp");
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", site);
+		}else if(id == 3){
+			String sessionusers = "comment";
+			String begin = "1";
+			String end = "5";
+			String page = "1";
+			session.setAttribute("sessionusers", sessionusers);
+			session.setAttribute("begin", begin);
+			session.setAttribute("end", end);
+			session.setAttribute("page", page);
+			try {
+				response.sendRedirect(basePath+"func/comment.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String site = new String(basePath + "func/comment.jsp");
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", site);
+		}else if(id == 4){
+			String sessionusers = "bullent";
+			String begin = "1";
+			String end = "5";
+			String page = "1";
+			session.setAttribute("sessionusers", sessionusers);
+			session.setAttribute("begin", begin);
+			session.setAttribute("end", end);
+			session.setAttribute("page", page);
+			try {
+				response.sendRedirect(basePath+"func/bullent.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String site = new String(basePath + "func/bullent.jsp");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);
 		}else{

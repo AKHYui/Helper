@@ -5,7 +5,7 @@
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
 <sql:query dataSource="${bulletin}" var="result">
-SELECT * from bulletin order by id desc;
+SELECT * from bulletin order by id;
 </sql:query>
 <!-- 连接数据库进行全部公告的查找 结束 -->
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -19,7 +19,7 @@ SELECT * from bulletin order by id desc;
       		<th scope="col">删除操作</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
-		<c:forEach var="row" items="${result.rows}">
+		<c:forEach begin="1" end="5" var="row" items="${result.rows}">
 		<tbody>
     		<tr>
       			<td><c:out value="${row.id}"/></td>

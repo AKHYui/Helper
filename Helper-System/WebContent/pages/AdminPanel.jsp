@@ -78,8 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=1">用户管理</a>
           <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=2">发布管理</a>
-          <a class="dropdown-item" href="#">评论管理</a>
-          <a class="dropdown-item" href="#">公告管理</a>
+          <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=3">评论管理</a>
+          <a class="dropdown-item" href="<%= basePath%>FuncRewrite?id=4">公告管理</a>
           
       </li>
       <li class="nav-item dropdown">
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           更多功能
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.jsp">退出登录</a>
+          <a class="dropdown-item" href="<%= basePath%>SessionDel?exit=1">退出登录</a>
           <a class="dropdown-item" href="#">修改密码</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="<%=basePath %>">回到主页</a>

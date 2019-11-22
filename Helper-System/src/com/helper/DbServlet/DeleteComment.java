@@ -30,7 +30,7 @@ public class DeleteComment extends HttpServlet{  //这个是删除评论的功能
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
-				String site = new String(basePath + "pages/AdminPanel.jsp");
+				String site = new String(basePath + "func/comment.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 				//conn.close();

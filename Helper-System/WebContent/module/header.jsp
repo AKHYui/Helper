@@ -13,7 +13,7 @@
         <a class="nav-link" href="http://localhost:8080/Helper-System/">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://localhost:8080/Helper-System/pages/AdminPanel.jsp?username=admin">回到面板</a>
+        <a class="nav-link" href="http://localhost:8080/Helper-System/pages/AdminPanel.jsp">回到面板</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,8 +21,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="http://localhost:8080/Helper-System/FuncRewrite?id=1">用户管理</a>
-          <a class="dropdown-item" href="#">发布管理</a>
-          <a class="dropdown-item" href="#">评论管理</a>
+          <a class="dropdown-item" href="http://localhost:8080/Helper-System/FuncRewrite?id=2">发布管理</a>
+          <a class="dropdown-item" href="http://localhost:8080/Helper-System/FuncRewrite?id=3">评论管理</a>
           <a class="dropdown-item" href="#">公告管理</a>
           
       </li>

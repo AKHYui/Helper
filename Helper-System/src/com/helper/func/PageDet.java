@@ -9,9 +9,9 @@ public class PageDet {
 		}else if(i == 2){
 			base = "func/article.jsp";
 		}else if(i == 3){
-			base = "";
+			base = "func/comment.jsp";
 		}else if(i == 4){
-			base = "";
+			base = "func/bullent.jsp";
 		}else{
 			base = null;
 		}

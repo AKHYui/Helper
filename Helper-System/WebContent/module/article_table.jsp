@@ -23,7 +23,7 @@ SELECT * from article order by id desc;
       		<th scope="col">删除操作</th>
     		</tr>
   		</thead><!-- 循环输出各个用户的信息 -->
-		<c:forEach var="row" items="${result.rows}">
+		<c:forEach begin="1" end="5" var="row" items="${result.rows}">
 		<tbody>
     		<tr>
       			<td><c:out value="${row.id}"/></td>
