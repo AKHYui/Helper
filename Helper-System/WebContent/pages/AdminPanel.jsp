@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-<!doctype html>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; UTF-8">
@@ -48,9 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			String info = "";
 			if(hour_i<12){
 				info = "早上好！";
-			}else if(hour_i>12 && hour_i<14){
+			}else if(hour_i>=12 && hour_i<14){
 				info = "中午好！";
-			}else if(hour_i>14 && hour_i<18){
+			}else if(hour_i>=14 && hour_i<18){
 				info = "下午好！";
 			}else{
 				info = "晚上好！";

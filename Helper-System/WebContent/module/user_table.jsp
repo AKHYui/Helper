@@ -16,8 +16,10 @@ SELECT * from user order by id desc;
     		<tr>
       		<th scope="col">ID</th>
       		<th scope="col">用户名</th>
+      		<!-- 
       		<th scope="col">email</th>
       		<th scope="col">手机号码</th>
+      		 -->
       		<th scope="col">身份权限</th>
       		<th scope="col">删除操作</th>
       		<th scope="col">查看信息</th>
@@ -28,8 +30,10 @@ SELECT * from user order by id desc;
     		<tr>
       			<td><c:out value="${row.id}"/></td>
       			<td><c:out value="${row.username}"/></td>
+      			<!-- 
       			<td><c:out value="${row.email}"/></td>
       			<td><c:out value="${row.phone}"/></td>
+      			 -->
       			<td><c:out value="${row.permit}"/></td>
       			<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal${row.id}" value="${row.id}">删除
 </button></td>

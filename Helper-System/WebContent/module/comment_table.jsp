@@ -16,7 +16,7 @@ SELECT * from comment order by id desc;
       		<th scope="col">评论</th>
       		<th scope="col">时间</th>
       		<th scope="col">评论人</th>
-      		<th scope="col">发布标题</th>
+      		<!-- <th scope="col">发布标题</th> -->
       		<th scope="col">详细查看</th>
       		<th scope="col">删除操作</th>
     		</tr>
@@ -28,7 +28,7 @@ SELECT * from comment order by id desc;
       			<td><c:out value="${row.text}"/></td>
       			<td><c:out value="${row.time}"/></td>
       			<td><c:out value="${row.user}"/></td>
-      			<td><c:out value="${row.atitle}"/></td>
+      			<!-- <td><c:out value="${row.atitle}"/></td> -->
       			<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Comment${row.id}" value="${row.id}">查看
 </button></td>
       			<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteComment${row.id}" value="${row.id}">删除

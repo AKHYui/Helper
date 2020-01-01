@@ -15,10 +15,10 @@ SELECT * from article order by id desc;
     		<tr>
       		<th scope="col">ID</th>
       		<th scope="col">标题</th>
-      		<th scope="col">正文</th>
+      		<!--  <th scope="col">正文</th>-->
       		<th scope="col">时间</th>
       		<th scope="col">发布人</th>
-      		<th scope="col">发布地点</th>
+      		<!-- <th scope="col">发布地点</th> -->
       		<th scope="col">详细查看</th>
       		<th scope="col">删除操作</th>
     		</tr>
@@ -28,10 +28,10 @@ SELECT * from article order by id desc;
     		<tr>
       			<td><c:out value="${row.id}"/></td>
       			<td><c:out value="${row.title}"/></td>
-      			<td><c:out value="${row.text}"/></td>
+      			<!-- <td><c:out value="${row.text}"/></td> -->
       			<td><c:out value="${row.time}"/></td>
       			<td><c:out value="${row.user}"/></td>
-      			<td><c:out value="${row.addr}"/></td>
+      			<!--  <td><c:out value="${row.addr}"/></td>-->
       			<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Aritcle${row.id}" value="${row.id}">查看
 </button></td>
       			<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteArticle${row.id}" value="${row.id}">删除
