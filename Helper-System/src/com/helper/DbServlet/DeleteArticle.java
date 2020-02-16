@@ -31,7 +31,7 @@ public class DeleteArticle extends HttpServlet {  //и╬ЁЩндуб
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
-				String site = new String(basePath + "func/article.jsp");
+				String site = new String(basePath + "/func/article.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 				//conn.close();

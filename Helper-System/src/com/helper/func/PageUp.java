@@ -1,4 +1,4 @@
-package com.helper.func;
+	package com.helper.func;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -33,6 +33,24 @@ public class PageUp extends HttpServlet {
 			String end = String.valueOf(end_i);
 			page_i = end_i/5;
 			String page = String.valueOf(page_i);
+			session.setAttribute("begin", begin);
+			session.setAttribute("end", end);
+			session.setAttribute("page", page);
+			base = PageDet.pagefun(uid);
+			try {
+				response.sendRedirect(basePath+base);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String site = new String(basePath + base);
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", site);
+		}else if(all_i==end_i){
+			page_i = end_i/5;
+			String page = String.valueOf(page_i);
+			String begin = String.valueOf(begin_i);
+			String end = String.valueOf(end_i);
 			session.setAttribute("begin", begin);
 			session.setAttribute("end", end);
 			session.setAttribute("page", page);
