@@ -4,6 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,22 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"> <a href="#"><%= session.getAttribute("username")%> </a></li>
-                <li> <a href="#">Dashboard </a></li>
-                <li> <a href="#">Dashboard </a></li>
-                <li> <a href="#">Dashboard </a></li>
+                <li> <a href="#">首 页</a></li>
+                <li> <a href="#">用户设置 </a></li>
+                <li> <a href="#">我的发布 </a></li>
+                <li> <a href="#">我的评论 </a></li>
                 <li> <a href="<%= basePath %>SessionDel?exit=1">退出登录 </a></li>
             </ul>
         </div>
         <div class="page-content-wrapper">
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div>
-                            <h1>Sidebar <small>menu </small></h1>
-                        </div>
-                        <p>Paragraph</p>
-                    </div>
-                </div>
+                <%@ include file="/home/module/home_art.jsp"%>
             </div>
         </div>
     </div>
