@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 20/02/2020 12:05:31
+ Date: 20/02/2020 20:14:27
 */
 
 SET NAMES utf8mb4;
@@ -28,15 +28,15 @@ CREATE TABLE `article`  (
   `time` datetime NOT NULL COMMENT '发布时间',
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '发布人',
   `addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '当前地点',
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (0, '欢迎使用', '欢迎使用信院互帮圈平台，在这个平台您可以发布求助，也可以回应求助，求助内容禁止违反校规。', '2019-11-16 18:18:54', 'admin', '平台本部');
-INSERT INTO `article` VALUES (2, '测试案例1', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
+INSERT INTO `article` VALUES (8, '欢迎使用', '欢迎使用信院互帮圈平台，在这个平台您可以发布求助，也可以回应求助，求助内容禁止违反校规。', '2019-11-16 18:18:54', 'admin', '平台本部', '/Helper-System/img/userimg/welcome.jpg');
 
 -- ----------------------------
 -- Table structure for bulletin
@@ -76,13 +76,7 @@ CREATE TABLE `comment`  (
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES (1, '测试评论1', '2019-11-16 18:18:54', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (2, '测试评论2', '2019-11-16 18:18:55', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (3, '测试评论3', '2019-11-16 18:18:56', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (4, '测试评论4', '2019-11-16 18:18:57', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (5, '测试评论5', '2019-11-16 18:18:58', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (6, '测试评论6', '2019-11-16 18:18:59', 'user1', '测试案例1');
-INSERT INTO `comment` VALUES (7, '测试评论7', '2019-11-16 18:19:00', 'user1', '测试案例1');
+INSERT INTO `comment` VALUES (1, '这是user1000的测试评论', '2019-11-16 18:18:54', 'user1000', '欢迎使用');
 
 -- ----------------------------
 -- Table structure for user
@@ -102,16 +96,13 @@ CREATE TABLE `user`  (
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员', '/Helper-System/img/icon/icon.jpg');
-INSERT INTO `user` VALUES (0025, 'user25', '11111111111111111', '591276457@qq.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-System/img/icon/icon.jpg');
-INSERT INTO `user` VALUES (0028, 'user28', '33333333333', 'zzk4093977@gmail.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-System/img/icon/icon.jpg');
-INSERT INTO `user` VALUES (0034, 'user34', '121212121212121', '121212@qq.com', 25, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1990-11-10', '用户', '/Helper-System/img/icon/icon.jpg');
-INSERT INTO `user` VALUES (0035, 'user35', '123456789', '1111111111@qq.com', 20, '6128880580', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-/Helper-System/img/icon/icon.jpg');
 INSERT INTO `user` VALUES (0043, 'user1000', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户', '/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0044, 'user1', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户', '/Helper-System/img/icon/icon.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

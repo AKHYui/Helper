@@ -272,7 +272,7 @@ public class UseJdbc {
 			return 0;
 		}else {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','位置','用户')";
+			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','位置','用户','/Helper-System/img/icon/icon.jpg')";
 			stmt = conn.createStatement();
 			rs = stmt.executeUpdate(sql1);
 			if(rs!=0){

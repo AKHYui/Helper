@@ -64,7 +64,7 @@ public class InsertUser extends HttpServlet {  //添加用户
 			}else{
 				try {
 					conn = DriverManager.getConnection(DB_URL, USER, PASS);
-					String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit) VALUES ('"+username+"','"+password+"','"+email+"',"+age+",'"+phone+"','"+sex+"','"+jieshao+"','"+birth+"','用户')";
+					String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',"+age+",'"+phone+"','"+sex+"','"+jieshao+"','"+birth+"','用户','/Helper-System/img/icon/icon.jpg')";
 					stmt = conn.createStatement();
 					rs = stmt.executeUpdate(sql1);
 					if (rs != 0) {

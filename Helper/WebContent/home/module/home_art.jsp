@@ -21,6 +21,14 @@ SELECT * from article order by id desc;
                         <div class="text-center">
                         <p ><small><a class="text-muted" href="#">${row.user}</a>·${row.time}·${row.addr}</small></p>
                         <p class="product">${row.text}</p>
+                        <div class="row">
+    						<!-- <div class="col-sm-12 col-md-12">
+        						<a href="#" class="thumbnail">
+            					<img width="300px" src="${row.img}"
+                 					alt="缩略图">
+        						</a> 
+    					</div> -->
+						</div>
                         <div><a href="/Helper/ArticleServlet?id=${row.id}"><button type="button" class="btn btn-default btn-sm" >查看</button></a>
                         <button type="button" class="btn btn-default btn-sm">收藏</button></div>
                         </div>

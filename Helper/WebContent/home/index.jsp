@@ -20,6 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath %>assets/css/Sidebar-Menu-1.css">
     <link rel="stylesheet" href="<%=basePath %>assets/css/Sidebar-Menu.css">
     <link rel="stylesheet" href="<%=basePath %>assets/css/styles.css">
+    
+	
 </head>
 <body>
 <!-- 连接数据库进行头像的查找 -->
@@ -30,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
 </sql:query>
 <!-- 连接数据库进行头像的查找 结束 -->
+
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">

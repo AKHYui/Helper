@@ -44,6 +44,24 @@
     <servlet-name>delete_a</servlet-name>
     <url-pattern>/Helper-System/DeleteArticle</url-pattern>
       </servlet-mapping>
+      
+  <servlet>
+    <servlet-name>sessiondel</servlet-name>
+    <servlet-class>com.helper.Session.SessionDel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sessiondel</servlet-name>
+    <url-pattern>/Helper/SessionDel</url-pattern>
+      </servlet-mapping>
+      
+  <servlet>
+    <servlet-name>guestlogin</servlet-name>
+    <servlet-class>com.helper.UserFunc.GuestLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>guestlogin</servlet-name>
+    <url-pattern>/Helper/GuestLogin</url-pattern>
+      </servlet-mapping>
   
   <display-name>Helper-System</display-name>
   <welcome-file-list>
