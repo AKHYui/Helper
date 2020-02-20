@@ -295,9 +295,19 @@ public class UseJdbc {
 		String sql = "SELECT * FROM article WHERE id="+id+"";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
-		
 		return rs;
-		
+	}
+	
+	//根据求助题目查询回应
+	public static ResultSet rst(String title) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM comment WHERE atitle='"+title+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
 	}
 
 }

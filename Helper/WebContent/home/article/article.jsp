@@ -83,21 +83,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			</div>
         			</form>
         			<hr/>
-        			<sql:setDataSource var="comment" driver="com.mysql.jdbc.Driver" 
-     				url="jdbc:mysql://localhost:3306/helper"
-     				user="root"  password="root"/>
-					<sql:query dataSource="${comment}" var="result">
-					SELECT * from comment WHERE atitle="<%=title %>";
-					</sql:query>
         			<div>
         			<h4>应答:</h4>
-        			<c:forEach var="row" items="${result.rows}">
+        			<p><c:forEach items="${key_list}" var="usr" varStatus="idx">
         			<div>
-        			<!-- 这里的头像部分暂时有无法完全实现 -->
-        			<div id="icon"><img width="30px" src="/Helper-System/img/icon/${row.user}icon.jpg"></div>
-        			<div id="text"><p class="font-weight-bold">${row.user}</p></div>&nbsp;&nbsp;&nbsp;&nbsp;
-        			<div id="time"><p>${row.time}</p></div>
-        			<div><p class="lead">${row.text}</p></div>
+        			<!-- 之前发现的一个问题
+        			如果我用sql标签进行查找，无法做到同时查找用户表和回应表
+        			所以我将回应表的sql标签去掉，将查找回应集放在了ArticleServlet里
+        			ArticleServlet会送过来一个list形式的数据集
+        			将这个数据集用c标签拆分成多个单个的数据并循环显示
+        			最后从每个循环显示出的数据中取username
+        			用sql标签对用户表进行查找，从而得出对应头像路径 -->
+        			
+        			<sql:setDataSource var="article" driver="com.mysql.jdbc.Driver" 
+     				url="jdbc:mysql://localhost:3306/helper"
+     				user="root"  password="root"/>
+					<sql:query dataSource="${article}" var="result">
+					SELECT icon from user WHERE username = "${usr.cuser}";
+					</sql:query>
+        			<c:forEach var="row" items="${result.rows}">
+        			<div id="icon"><img width="30px" src="${row.icon}"></div>
+        			</c:forEach>
+        			<div id="text"><p class="font-weight-bold">${usr.cuser}</p></div>&nbsp;&nbsp;&nbsp;&nbsp;
+        			<div id="time"><p>${usr.ctime}</p></div>
+        			<div><p class="lead">${usr.ctext}</p></div>
         			</div>
         			<hr/>
         			</c:forEach>

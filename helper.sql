@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 20/02/2020 20:14:27
+ Date: 20/02/2020 21:29:46
 */
 
 SET NAMES utf8mb4;
@@ -77,6 +77,7 @@ CREATE TABLE `comment`  (
 -- Records of comment
 -- ----------------------------
 INSERT INTO `comment` VALUES (1, '这是user1000的测试评论', '2019-11-16 18:18:54', 'user1000', '欢迎使用');
+INSERT INTO `comment` VALUES (2, '这是user1000的测试评论2', '2019-11-16 18:18:54', 'user1000', '欢迎使用');
 
 -- ----------------------------
 -- Table structure for user
