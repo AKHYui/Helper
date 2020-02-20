@@ -1,6 +1,6 @@
 .product {
 
-max-width: 300px;
+max-width: 600px;
 
 overflow: hidden;
 
@@ -8,4 +8,8 @@ text-overflow: ellipsis;
 
 white-space: nowrap;
 
-};
+}
+#icon, #user{
+	display: inline-block;
+}
+

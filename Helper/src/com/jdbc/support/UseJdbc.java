@@ -2,6 +2,7 @@ package com.jdbc.support;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -243,6 +244,12 @@ public class UseJdbc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return 0;
 	}
 	
@@ -269,13 +276,28 @@ public class UseJdbc {
 			stmt = conn.createStatement();
 			rs = stmt.executeUpdate(sql1);
 			if(rs!=0){
+				conn.close();
 				return 1;
 			}else {
+				conn.close();
 				return 2;
 			}
 		}
 		
 	}
 	
-	
+	//查询指定求助
+	public static ResultSet rss(int id) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM article WHERE id="+id+"";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		
+		return rs;
+		
+	}
+
 }

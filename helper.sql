@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 19/02/2020 20:42:07
+ Date: 20/02/2020 12:05:31
 */
 
 SET NAMES utf8mb4;
@@ -35,13 +35,8 @@ CREATE TABLE `article`  (
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (0, '测试1', '测试1', '2019-11-16 18:18:54', 'user1', 'aa');
+INSERT INTO `article` VALUES (0, '欢迎使用', '欢迎使用信院互帮圈平台，在这个平台您可以发布求助，也可以回应求助，求助内容禁止违反校规。', '2019-11-16 18:18:54', 'admin', '平台本部');
 INSERT INTO `article` VALUES (2, '测试案例1', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
-INSERT INTO `article` VALUES (3, '测试案例2', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
-INSERT INTO `article` VALUES (4, '测试案例3', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
-INSERT INTO `article` VALUES (5, '测试案例4', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
-INSERT INTO `article` VALUES (6, '测试案例5', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
-INSERT INTO `article` VALUES (7, '测试案例6', '这个用于测试，检查功能完整性', '2019-11-16 18:18:55', 'user1', '1号楼');
 
 -- ----------------------------
 -- Table structure for bulletin
@@ -104,6 +99,7 @@ CREATE TABLE `user`  (
   `jieshao` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '介绍',
   `birth` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '生日',
   `permit` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限',
+  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
@@ -111,11 +107,11 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员');
-INSERT INTO `user` VALUES (0025, 'user25', '11111111111111111', '591276457@qq.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
-INSERT INTO `user` VALUES (0028, 'user28', '33333333333', 'zzk4093977@gmail.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
-INSERT INTO `user` VALUES (0034, 'user34', '121212121212121', '121212@qq.com', 25, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1990-11-10', '用户');
-INSERT INTO `user` VALUES (0035, 'user35', '123456789', '1111111111@qq.com', 20, '6128880580', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户');
-INSERT INTO `user` VALUES (0043, 'user1000', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户');
+INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员', '/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0025, 'user25', '11111111111111111', '591276457@qq.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0028, 'user28', '33333333333', 'zzk4093977@gmail.com', 20, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0034, 'user34', '121212121212121', '121212@qq.com', 25, '13753518074', '1', '这个人很懒，暂时还没有介绍', '1990-11-10', '用户', '/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0035, 'user35', '123456789', '1111111111@qq.com', 20, '6128880580', '1', '这个人很懒，暂时还没有介绍', '1999-1-1', '用户', '/Helper-/Helper-System/img/icon/icon.jpg');
+INSERT INTO `user` VALUES (0043, 'user1000', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户', '/Helper-System/img/icon/icon.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

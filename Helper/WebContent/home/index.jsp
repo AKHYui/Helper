@@ -22,11 +22,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath %>assets/css/styles.css">
 </head>
 <body>
+<!-- 连接数据库进行头像的查找 -->
+<sql:setDataSource var="icon" driver="com.mysql.jdbc.Driver" 
+     url="jdbc:mysql://localhost:3306/helper"
+     user="root"  password="root"/>
+<sql:query dataSource="${icon}" var="result">
+SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
+</sql:query>
+<!-- 连接数据库进行头像的查找 结束 -->
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a href="#"><%= session.getAttribute("username")%> </a></li>
-                <li> <a href="#">首 页</a></li>
+                <li class="sidebar-brand">
+                <div id="wrap">
+                <c:forEach var="row_i" items="${result.rows}">
+                <div id="icon"><img width="30px" src="${row_i.icon}"></div>
+                </c:forEach>
+				<div id="user"><a href="#"><%= session.getAttribute("username")%> </a></div>
+				</div></li>
+                <li> <a href="<%=basePath%>IndexServlet">首 页</a></li>
                 <li> <a href="#">用户设置 </a></li>
                 <li> <a href="#">我的发布 </a></li>
                 <li> <a href="#">我的评论 </a></li>
