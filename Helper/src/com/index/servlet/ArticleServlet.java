@@ -23,6 +23,7 @@ public class ArticleServlet extends HttpServlet {
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
+		String sid = request.getParameter("id");
 		int id = Integer.parseInt(request.getParameter("id"));
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
@@ -62,6 +63,7 @@ public class ArticleServlet extends HttpServlet {
 		session.setAttribute("user", user);
 		session.setAttribute("addr", addr);
 		session.setAttribute("img", img);
+		session.setAttribute("sid", sid);
 		
 		List<Map> list =new ArrayList<Map>();//创建list集合用于存入map的键值对集合
 		String c_title = title.toString();

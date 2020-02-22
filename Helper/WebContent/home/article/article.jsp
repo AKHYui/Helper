@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -16,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	String addr = session.getAttribute("addr").toString();  
 	String img = session.getAttribute("img").toString();  
 	String username = session.getAttribute("username").toString();
+	String sid = session.getAttribute("sid").toString();  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <div data-aos="fade-up">
         <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height:80px;background-color:#37434d;color:#ffffff;">
-            <div class="container-fluid"><a class="navbar-brand" href="<%=basePath%>IndexServlet"><i class="fa fa-chevron-left"></i>&nbsp;返回</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand" href="<%=basePath%>IndexServlet"><i class="fa fa-chevron-left"></i>&nbsp;返回</a>
                 <div
                     class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
@@ -70,12 +74,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<sql:query dataSource="${icon}" var="result">
 					SELECT icon from user where username="<%=username%>" ;
 					</sql:query>
-                    <form method="post" action="#" class="form-horizontal">
+                    <form method="get" action="<%=basePath %>CommentSubmitServlet" class="form-horizontal">
                     <div class="form-group">
                     <c:forEach var="row_i" items="${result.rows}">
                     <div id="icon"><img width="25px" src="${row_i.icon}"></div>
                     </c:forEach>
-        			<div id="text"><%=username %></div><textarea class="form-control" name="jieshao" placeholder="赶快回应TA吧"></textarea>
+        			<div id="text"><%=username %></div><textarea class="form-control" name="answer" placeholder="赶快回应TA吧"></textarea>
+        			<input type="hidden" class="form-control"  name="username" value="<%=username %>">
+        			<input type="hidden" class="form-control"  name="atitle" value="<%=title %>">
+        			<input type="hidden" class="form-control"  name="sid" value="<%=sid%>">
         			</div>
         			<div align="center">
         			<input class="btn btn-default" type="submit" value="提交">

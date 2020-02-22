@@ -309,5 +309,43 @@ public class UseJdbc {
 		rs = stmt.executeQuery();
 		return rs;
 	}
+	
+	//应答入库
+	public static int css(String answer, String username, String atitle, String nowtime) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "INSERT INTO comment (text,time,user,atitle) VALUES ('"+answer+"','"+nowtime+"','"+username+"','"+atitle+"')";
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if (rs!=0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	
+	//发送一条求助到数据库
+	public static int artadd(String username, String arttitle, String artaddr, String arttext, String filename, String nowtime) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "INSERT INTO article (title,addr,user,text,img,time) "
+				+ "VALUES ('"+arttitle+"','"+artaddr+"','"+username+"','"+arttext+"','"+filename+"','"+nowtime+"')";
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if (rs!=0){
+			conn.close();
+			return 1;
+		}else {
+			conn.close();
+			return 2;
+		}
+		
+	}
 
 }
