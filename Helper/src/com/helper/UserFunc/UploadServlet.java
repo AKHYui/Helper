@@ -95,6 +95,15 @@ public class UploadServlet extends HttpServlet {
                         String fileName = new File(item.getName()).getName();
                         String filePath = uploadPath + File.separator + fileName;
                         File storeFile = new File(filePath);
+                        
+                        String jpg = "jpg";
+                        String png = "png";
+                        String gif = "gif";
+                        String fileendv = String.valueOf(fileName);
+                        String fileend = fileendv.substring(fileendv.length() -3,fileendv.length());
+                        System.out.println(fileend);
+                        if(fileend.equals(jpg)==true || fileend.equals(png)==true){
+                        
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);
                         System.out.println(username);
@@ -108,9 +117,7 @@ public class UploadServlet extends HttpServlet {
                                 arttext);
                         request.setAttribute("filename",
                                 "/Helper/upload/image/"+fileName);
-                        
                         session.setAttribute("filename", fileName);
-                        
                         //跳转到SendArticleServlet
                         String path = request.getContextPath();
                     	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
@@ -118,15 +125,51 @@ public class UploadServlet extends HttpServlet {
                         String site = new String(basePath+"/SendArticleServlet");
                 		response.setStatus(response.SC_MOVED_TEMPORARILY);
                 		response.setHeader("Location", site);
+                        }else if(fileend.equals(gif)==true){
+                        	// 在控制台输出文件的上传路径
+                            System.out.println(filePath);
+                            System.out.println(username);
+                            // 保存文件到硬盘
+                            item.write(storeFile);
+                            request.setAttribute("title",
+                                arttitle);
+                            request.setAttribute("addr",
+                                    artaddr);
+                            request.setAttribute("text",
+                                    arttext);
+                            request.setAttribute("filename",
+                                    "/Helper/upload/image/"+fileName);
+                            
+                            session.setAttribute("filename", fileName);
+                            
+                            //跳转到SendArticleServlet
+                            String path = request.getContextPath();
+                        	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+                        			+ "/";
+                            String site = new String(basePath+"/SendArticleServlet");
+                    		response.setStatus(response.SC_MOVED_TEMPORARILY);
+                    		response.setHeader("Location", site);
+                        }else{
+                        	String path = request.getContextPath();
+                        	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+                        			+ "/";
+                        	response.getWriter().write("Only support jpg,png,gif picture!!!");
+                        	response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
+                        	System.out.println("不支持文件类型");
+                        }
+                        	
+                        }
                     }
                 }
-            }
+            
         } catch (Exception ex) {
             request.setAttribute("message",
                     "错误信息: " + ex.getMessage());
         }
+        
         // 跳转到 message.jsp
         //getServletContext().getRequestDispatcher("/home/module/message.jsp").forward(
         //        request, response);
     }
+        
 }

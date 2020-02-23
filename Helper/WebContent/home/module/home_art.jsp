@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+String mpath = request.getContextPath();
+String mbasePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+mpath+"/";
+%>
 <!-- 连接数据库进行全部帖子的查找 -->
 <sql:setDataSource var="article" driver="com.mysql.jdbc.Driver" 
      url="jdbc:mysql://localhost:3306/helper"
@@ -29,8 +32,8 @@ SELECT * from article order by id desc;
         						</a> 
     					</div> -->
 						</div>
-                        <div><a href="/Helper/ArticleServlet?id=${row.id}"><button type="button" class="btn btn-default btn-sm" >查看</button></a>
-                        <button type="button" class="btn btn-default btn-sm">收藏</button></div>
+                        <div><a href="<%=mbasePath %>ArticleServlet?id=${row.id}"><button type="button" class="btn btn-default btn-sm" ><i class="fa fa-location-arrow"></i>&nbsp;查看</button></a>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-star"></i>&nbsp;收藏</button></div>
                         </div>
                     </div>
                     <div class="col-md-3">

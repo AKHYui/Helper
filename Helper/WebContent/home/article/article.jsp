@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <c:forEach var="row_i" items="${result.rows}">
                     <div id="icon"><img width="25px" src="${row_i.icon}"></div>
                     </c:forEach>
-        			<div id="text"><%=username %></div><textarea class="form-control" name="answer" placeholder="赶快回应TA吧"></textarea>
+        			<div id="text"><%=username %>&nbsp;<i class="fa fa-comment"></i></div><textarea class="form-control" name="answer" placeholder="赶快回应TA吧"></textarea>
         			<input type="hidden" class="form-control"  name="username" value="<%=username %>">
         			<input type="hidden" class="form-control"  name="atitle" value="<%=title %>">
         			<input type="hidden" class="form-control"  name="sid" value="<%=sid%>">

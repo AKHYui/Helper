@@ -347,5 +347,83 @@ public class UseJdbc {
 		}
 		
 	}
+	
+	//确定求助确实属于该用户
+	public static int artuser(String username, int id) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM article WHERE user = '"+username+"' and id="+id+"";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//用户删除自己的求助
+	public static int artdel(int id) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "DELETE FROM article WHERE Id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return 1;
+	}
+	
+	//根据求助主题来获取求助ID
+	public static ResultSet tid(String atitle) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM article WHERE title='"+atitle+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//确定应答确实属于该用户
+	public static int comuser(String username, int id) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM comment WHERE user = '"+username+"' and id="+id+"";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//用户删除自己的求助
+	public static int comdel(int id) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "DELETE FROM comment WHERE Id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return 1;
+	}
 
 }

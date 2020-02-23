@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
+    <title>提交检查</title>
     <link rel="stylesheet" href="<%=basePath %>assets/send_assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath %>assets/send_assets/css/Contact-Form-Clean.css">
     <link rel="stylesheet" href="<%=basePath %>assets/send_assets/css/styles.css">
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="form-group"><input class="form-control"  readonly="readonly" type="text" value="<%= session.getAttribute("arttitle")%>"></div>
             <div class="form-group"><input class="form-control"  readonly="readonly" type="text" value="<%= session.getAttribute("artaddr")%>"></div>
             <div class="form-group"><textarea class="form-control" readonly="readonly" rows="14"><%= session.getAttribute("arttext")%></textarea></div>
-            <label for="img" class="control-label col-sm-4 col-sm-offset-1">图片:</label>
+            <label for="img" class="control-label col-sm-4 col-sm-offset-1">图片(只支持jpg,png,gif类型图片):</label>
       	<div class="form-group">
     		<label class="sr-only" for="inputfile">文件输入</label>
     		<input type="file" name="uploadFile">

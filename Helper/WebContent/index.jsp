@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,13 +36,16 @@
                         id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#">主页</a></li>
-                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Dropdown </a>
-                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a><span class="dropdown-item-text"
-                                        role="presentation">Text Item</span></div>
+                            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-list"></i>&nbsp;菜单</a>
+                                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="<%=basePath %>IndexServlet"><i class="fa fa-home"></i>&nbsp;首页面</a>
+                                <a class="dropdown-item" role="presentation" href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> &nbsp;我的发布</a>
+                                <a class="dropdown-item" role="presentation" href="#"><i class="fa fa-list"></i> &nbsp;我的应答</a>
+                                <a class="dropdown-item" role="presentation" href="#"><i class="fa fa-user"></i> &nbsp;用户设置</a>
+                                </div>
                             </li>
                         </ul>
                         <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                           
                         </form><!-- <span class="navbar-text"> <a class="login" href="pages/login.jsp">登陆</a></span><a class="btn btn-light action-button" role="button" href="pages/register.jsp">注册</a></div> -->	
                 </div>
             </nav>
@@ -47,7 +53,8 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
                         <h1>信院互帮圈</h1>
-                        <p>Mauris egestas tellus non ex condimentum, ac ullamcorper sapien dictum. Nam consequat neque quis sapien viverra convallis. In non tempus lorem. </p><a href="IndexServlet"><button class="btn btn-light btn-lg action-button" type="button">快速加入</button></a></div>
+                        <p>Mutual aid platform, A Completely free online platform, You can submit your request and you can also help callers.</p><a href="IndexServlet">
+                        <button class="btn btn-light btn-lg action-button" type="button">快速加入&nbsp;<i class="fa fa-angle-double-right"></i></button></a></div>
                     <div
                         class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
                         <div class="iphone-mockup"></div>

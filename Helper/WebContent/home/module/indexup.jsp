@@ -53,12 +53,3 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
         </div>
         <div class="page-content-wrapper">
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
-                <%@ include file="/home/module/home_art.jsp"%>
-            </div>
-        </div>
-    </div>
-    <script src="<%=basePath %>assets/js/jquery.min.js"></script>
-    <script src="<%=basePath %>assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<%=basePath %>assets/js/Sidebar-Menu.js"></script>
-</body>
-</html>
