@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title><%=title %></title>
     <link rel="stylesheet" href="<%=basePath %>assets/article_assets/bootstrap/css/bootstrap.min.css">
@@ -37,7 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath %>assets/article_assets/css/Dark-NavBar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
     <link rel="stylesheet" href="<%=basePath %>assets/article_assets/css/styles.css">
-</head>
 </head>
 <body>
     <div data-aos="fade-up">

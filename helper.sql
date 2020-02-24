@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 24/02/2020 11:57:36
+ Date: 24/02/2020 18:32:53
 */
 
 SET NAMES utf8mb4;
@@ -87,7 +87,12 @@ CREATE TABLE `favorite`  (
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `atitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of favorite
+-- ----------------------------
+INSERT INTO `favorite` VALUES (12, 'user1000', '欢迎使用');
 
 -- ----------------------------
 -- Table structure for user
@@ -112,7 +117,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '1', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0001, 'admin', 'admin', 'test1', 30, '13800000000', '未知', '这个人很懒，暂时还没有介绍', '2010-10-1', '管理员', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0043, 'user1000', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0044, 'user1', '123', '123@qq.com', 0, '0', '未知', '这个人很懒，暂时还没有介绍', '位置', '用户', '/Helper/upload/icon/icon.jpg');
 
