@@ -425,5 +425,79 @@ public class UseJdbc {
 		conn.close();
 		return 1;
 	}
-
+	
+	//查询求助是否已经被收藏
+	public static int sefav(String username, String atitle) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM favorite WHERE user = '"+username+"' and atitle = '"+atitle+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//添加用户收藏
+	public static int addfav(String username, String atitle) throws SQLException{
+		
+		int rs = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "INSERT INTO favorite (user, atitle) "
+				+ "VALUES ('"+username+"', '"+atitle+"')";
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs != 0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//查询是否为本人收藏
+	public static int userfav(String username, int id) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM favorite WHERE user = '"+username+"' and id="+id+"";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//取消收藏
+	public static int delfav(int id) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "DELETE FROM favorite WHERE Id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return rs;
+		
+	}
 }
