@@ -500,4 +500,46 @@ public class UseJdbc {
 		return rs;
 		
 	}
+	
+	//检查传入信息是否与数据库中的信息一致
+	public static int useronly(String username, String password, String email, 
+			String phone, String sex, int age, String jieshao) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM user WHERE username ='"+username+"' and password = '"+password+"' and email = '"+email+"' and age = "+age+" and phone = '"+phone+"' and sex = '"+sex+"' and jieshao = '"+jieshao+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//更新用户数据
+	public static int updateuser(String username, String password, String email, 
+			String phone, String sex, int age, String jieshao, int birth) throws SQLException{
+	int rs = 0;
+	Connection conn = null;
+	conn = DriverManager.getConnection(DB_URL, USER, PASS);
+	String sql = "Update user SET password = '"+password+"', email = '"+email+"', phone = '"+phone+"', sex = '"+sex+"', age = "+age+", jieshao = '"+jieshao+"', birth = '"+birth+"' WHERE username = '"+username+"'";
+	Statement stmt = null;
+	stmt = conn.createStatement();
+	rs = stmt.executeUpdate(sql);
+	conn.close();
+	if(rs != 0){
+		conn.close();
+		return 1;
+	}else{
+		conn.close();
+		return 2;
+	}
+	}
 }

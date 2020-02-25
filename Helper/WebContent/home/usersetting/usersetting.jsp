@@ -12,7 +12,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
 <c:forEach var="row" items="${result.rows}">
 <h4 class="text-center">用户设定</h4>
 <br/>
-<form action="#" method="post" class="form-horizontal">
+<form action="<%=basePath %>GuestUpdateSetting" method="post" class="form-horizontal">
 <div class="row">
 <div class="col-md-6">
 <div class="pull-center">
@@ -20,21 +20,21 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
     <div class="input-group-prepend">
       <span class="input-group-text">用户名</span>
     </div>
-    <input type="text" class="form-control" value="${row.username}">
+    <input type="text" disabled="disabled" class="form-control" value="${row.username}">
   </div>
 <br/>
 <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text">邮箱</span>
     </div>
-    <input type="text" class="form-control" value="${row.email}">
+    <input type="text" name="email" class="form-control" value="${row.email}">
   </div>
 <br/>
 <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text">手机</span>
     </div>
-    <input type="text" class="form-control" value="${row.phone}">
+    <input type="text" name="phone" class="form-control" value="${row.phone}">
   </div>
 <br/>
 <div class="input-group mb-3">
@@ -50,14 +50,14 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
     <div class="input-group-prepend">
       <span class="input-group-text">密码</span>
     </div>
-    <input type="password" class="form-control" value="${row.password}">
+    <input type="password" name="password" class="form-control" value="${row.password}">
   </div>
 <br/>
 <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text">年龄</span>
     </div>
-    <input type="text" class="form-control" value="${row.age}">
+    <input type="text" name="age" class="form-control" value="${row.age}">
     <div class="input-group-prepend">
       <span class="input-group-text">岁</span>
     </div>
@@ -69,7 +69,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
       <span class="input-group-text">性别</span>
     </div>
 <select name="sex" class="custom-select-sm">
-    <option selected>未知</option>
+    <option selected value="保密">保密</option>
     <option value="男">男</option>
     <option value="女">女</option>
   </select>
@@ -86,7 +86,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
 <br/>
 <div class="form-group">
       <span class="input-group-text">自我介绍</span>
-      <textarea cols="3" class="form-control">${row.jieshao}</textarea>
+      <textarea name="jieshao" cols="3" class="form-control">${row.jieshao}</textarea>
 </div>
 <div align="center">
 <input type="submit" value="确认" class="btn btn-primary">
