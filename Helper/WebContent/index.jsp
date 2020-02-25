@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-list"></i>&nbsp;菜单</a>
                                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="<%=basePath %>IndexServlet"><i class="fa fa-home"></i>&nbsp;首页面</a>
                                 <a class="dropdown-item" role="presentation" href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> &nbsp;我的发布</a>
-                                <a class="dropdown-item" role="presentation" href="#"><i class="fa fa-list"></i> &nbsp;我的应答</a>
-                                <a class="dropdown-item" role="presentation" href="#"><i class="fa fa-user"></i> &nbsp;用户设置</a>
+                                <a class="dropdown-item" role="presentation" href="<%=basePath%>MyCommentServlet"><i class="fa fa-list"></i> &nbsp;我的应答</a>
+                                <a class="dropdown-item" role="presentation" href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> &nbsp;用户设置</a>
                                 </div>
                             </li>
                         </ul>

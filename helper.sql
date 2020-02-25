@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 25/02/2020 12:44:13
+ Date: 25/02/2020 15:52:16
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `article`  (
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of article
@@ -118,7 +118,7 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '0', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
-INSERT INTO `user` VALUES (0043, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '保密', '这个是user1000的自我介绍', '1997', '用户', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0043, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '男', '这个是user1000的自我介绍', '1997', '用户', '/Helper/upload/icon/449724.jpg');
 INSERT INTO `user` VALUES (0044, 'user1', '123456789', '987654321@helper.com', 20, '17000000000', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

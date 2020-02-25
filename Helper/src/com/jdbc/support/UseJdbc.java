@@ -542,4 +542,24 @@ public class UseJdbc {
 		return 2;
 	}
 	}
+	
+	//更新用户头像
+	public static int updateicon(String username, String iconname) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update user SET icon = '"+iconname+"' "
+				+ "WHERE username = '"+username+"'";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs != 0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
 }

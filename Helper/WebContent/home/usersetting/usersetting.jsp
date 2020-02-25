@@ -78,7 +78,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
     </div>
 </div>
 <br/>
-<button type="button" class="btn btn-primary btn-block">头像设定</button>
+<button type="button" data-toggle="modal" data-target="#Icon" class="btn btn-primary btn-block">头像设定</button>
 
 </div>
 </div>
@@ -93,5 +93,42 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
 <input type="reset" value="重置" class="btn btn-primary">
 </div>
 </form>
+	<!--弹窗 -->
+<!-- 查看信息用的模态框 -->
+<!-- Modal -->
+<div class="modal fade" id="Icon" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleModalLabel">修改头像</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<%=basePath %>IconUpload" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+      <div class="row">
+    <div class="col-sm-6 col-md-3">
+        <a href="#" class="thumbnail">
+            <img width="130px" src="${row.icon}"
+                 alt="通用的占位符缩略图">
+        </a>
+    </div>
+     <div class="col-sm-6 col-md-9">
+      	<div class="form-group">
+    		<label class="sr-only" for="inputfile">文件输入</label>
+    		<input type="file" name="uploadFile">
+ 		 </div>
+     </div>
+    </div>
+      </div>
+      	<div class="modal-footer">
+ 		 </div>
+            <div class="form-group"><button class="btn btn-primary" type="submit">确定 </button></div>
+        </form>
+        </div>
+      </div>
+      </div>
+<!-- 查看信息用的模态框 结束 -->
 </c:forEach>
 <%@ include file="/home/module/indexdown.jsp"%>
