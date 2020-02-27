@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 26/02/2020 20:34:39
+ Date: 27/02/2020 17:15:38
 */
 
 SET NAMES utf8mb4;
@@ -80,6 +80,28 @@ INSERT INTO `comment` VALUES (9, 'user1000的第一条测试', '2020-02-23 18:17
 INSERT INTO `comment` VALUES (12, '欢迎~', '2020-02-25 18:45:33', 'lin', '欢迎使用');
 
 -- ----------------------------
+-- Table structure for fastmod
+-- ----------------------------
+DROP TABLE IF EXISTS `fastmod`;
+CREATE TABLE `fastmod`  (
+  `id` int(4) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `helper` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `money` int(4) NOT NULL,
+  `userphone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of fastmod
+-- ----------------------------
+INSERT INTO `fastmod` VALUES (1, 'user1000', '帮我去图书馆借一本书', 'user1', '2020-2-27 10:18', '已被接单', 1, '17000000000');
+INSERT INTO `fastmod` VALUES (4, 'admin', '来一个人帮我把这个平台完善好', 'user1000', '2020-02-27 15:35:35', '已被接单', 100, '13000000000');
+
+-- ----------------------------
 -- Table structure for favorite
 -- ----------------------------
 DROP TABLE IF EXISTS `favorite`;
@@ -113,14 +135,14 @@ CREATE TABLE `user`  (
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '0', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0043, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '男', '这个是user1000的自我介绍', '1997', '用户', '/Helper/upload/icon/449724.jpg');
-INSERT INTO `user` VALUES (0044, 'user1', '123456789', '987654321@helper.com', 20, '17000000000', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '17000000000', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '/Helper/upload/icon/73875216_p0_master1200.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

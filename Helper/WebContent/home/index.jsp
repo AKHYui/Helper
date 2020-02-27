@@ -47,6 +47,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
                 <li> <a href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> 我的发布</a></li>
                 <li> <a href="<%=basePath%>MyCommentServlet"><i class="fa fa-list"></i> 我的应答</a></li>
                 <li> <a href="<%=basePath%>MyFavoriteServlet"><i class="fa fa-star"></i> 我的收藏</a></li>
+                <li> <a href="<%=basePath%>FastModServlet"><i class="fa fa-rocket"></i> 快速模式</a></li>
                 <li> <a href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> 用户设置</a></li>
                 <li> <a href="<%= basePath %>SessionDel?exit=1"><i class="fa fa-sign-out"></i> 退出登录 </a></li>
             </ul>

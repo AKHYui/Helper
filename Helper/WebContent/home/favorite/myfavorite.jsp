@@ -3,14 +3,14 @@
 <%@ include file="/home/module/indexup.jsp"%>
 
 <h4>我的收藏：</h4>
-<!-- 连接数据库进行全部帖子的查找 -->
+<!-- 连接数据库进行全部收藏的查找 -->
 	<sql:setDataSource var="myarticle" driver="com.mysql.jdbc.Driver" 
 	url="jdbc:mysql://localhost:3306/helper"
 	user="root"  password="root"/>
 	<sql:query dataSource="${myarticle}" var="result">
 	SELECT * from favorite WHERE user="<%= session.getAttribute("username")%>";
 	</sql:query>
-<!-- 连接数据库进行全部帖子的查找 结束 -->
+<!-- 连接数据库进行全部收藏的查找 结束 -->
 <c:forEach var="row" items="${result.rows}">
 <div class="row">
 	<div class="col-md-4">
@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-4">
 	<a href="<%=basePath%>CommentServlet?title=${row.atitle}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-location-arrow"></i>&nbsp;查看</button></a>
-	<button data-toggle="modal" data-target="#Delfavorite${row.id}" type="button" class="btn btn-default btn-sm"><i class="fa fa-times-circle"></i>&nbsp;删除</button>
+	<button data-toggle="modal" data-target="#Delfavorite${row.id}" type="button" class="btn btn-default btn-sm"><i class="fa fa-times-circle"></i>&nbsp;取消收藏</button>
 	<!--弹窗 -->
 <!-- 查看信息用的模态框 -->
 <!-- Modal -->

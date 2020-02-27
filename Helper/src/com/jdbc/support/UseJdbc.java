@@ -562,4 +562,67 @@ public class UseJdbc {
 		}
 		
 	}
+	
+	//检查求助是否被接单
+	public static ResultSet checkfastmod(int id) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT status FROM fastmod WHERE id="+id+"";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//接单求助
+	public static int dofastmod(int id, String username) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update fastmod SET helper = '"+username+"', status = '"+"已被接单"+"' WHERE id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs != 0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	
+	//添加快速求助
+	public static int addfastmod(String username, String phone,
+			int money, String text, String nowtime) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "INSERT INTO fastmod (user, text, userphone, helper, status, money, time) "
+				+ "VALUES ('"+username+"', '"+text+"', '"+phone+"', '无', '未被接单', "+money+", '"+nowtime+"')";
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs != 0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
+	
+	//查询用户所有的快速发布
+	public static ResultSet mfms(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM fastmod WHERE user = '"+username+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
 }
