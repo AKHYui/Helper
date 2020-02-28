@@ -614,7 +614,7 @@ public class UseJdbc {
 		
 	}
 	
-	//查询用户所有的快速发布
+	//查询规定用户所有的快速发布
 	public static ResultSet mfms(String username) throws SQLException{
 		ResultSet rs = null;
 		Connection conn = null;
@@ -624,5 +624,66 @@ public class UseJdbc {
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
 		return rs;
+	}
+	
+	//查询用户接单的所有求助
+	public static ResultSet cufm(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM fastmod WHERE helper = '"+username+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//查询当前登陆用户的手机号码
+	public static ResultSet hphone(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT phone FROM user WHERE username = '"+username+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//确认完成求助前的认证
+	public static int cof(String username, int id) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM fastmod WHERE helper = '"+username+"' and id= "+id+" and status = '已被接单'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	
+	//完成求助
+	public static int dorder(int id) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update fastmod SET status = '已完成' WHERE id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs != 0){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
 	}
 }

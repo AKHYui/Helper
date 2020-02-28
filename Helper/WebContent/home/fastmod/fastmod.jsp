@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-4">
 	<p class="text-center">
-	<button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-rmb"></i>&nbsp;我的接单</button>
+	<a href="<%=basePath%>MyOrderServlet"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-rmb"></i>&nbsp;我的接单</button></a>
 	</p>
     </div>
 </div>
@@ -68,7 +68,7 @@
       </div>
       </div>
       	<div class="modal-footer">
-        <a href="<%=basePath %>GuestGetFastMod?id=${row.id}"><button type="button" class="btn btn-success">接 单</button></a>
+        <a href="<%=basePath %>GuestGetFastMod?id=${row.id}&user=${row.user}"><button type="button" class="btn btn-success">接 单</button></a>
         </div>
       </div>
       </div>

@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 27/02/2020 17:15:38
+ Date: 28/02/2020 18:58:29
 */
 
 SET NAMES utf8mb4;
@@ -93,13 +93,14 @@ CREATE TABLE `fastmod`  (
   `money` int(4) NOT NULL,
   `userphone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fastmod
 -- ----------------------------
-INSERT INTO `fastmod` VALUES (1, 'user1000', '帮我去图书馆借一本书', 'user1', '2020-2-27 10:18', '已被接单', 1, '17000000000');
-INSERT INTO `fastmod` VALUES (4, 'admin', '来一个人帮我把这个平台完善好', 'user1000', '2020-02-27 15:35:35', '已被接单', 100, '13000000000');
+INSERT INTO `fastmod` VALUES (1, 'user1000', '帮我去图书馆借一本书', 'user1', '2020-2-27 10:18', '已完成', 1, '17000000000');
+INSERT INTO `fastmod` VALUES (4, 'admin', '来一个人帮我把这个平台完善好', 'user1000', '2020-02-27 15:35:35', '已完成', 100, '13000000000');
+INSERT INTO `fastmod` VALUES (5, 'user1000', '在接单之前会检查接单用户的手机号码是否完善，不完善无法接单', '无', '2020-02-28 17:22:02', '未被接单', 10, '13545678912');
 
 -- ----------------------------
 -- Table structure for favorite
@@ -142,7 +143,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '0', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0043, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '男', '这个是user1000的自我介绍', '1997', '用户', '/Helper/upload/icon/449724.jpg');
-INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '17000000000', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '13545612356', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '/Helper/upload/icon/73875216_p0_master1200.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

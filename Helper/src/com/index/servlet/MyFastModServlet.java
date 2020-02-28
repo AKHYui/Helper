@@ -30,6 +30,8 @@ public class MyFastModServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		
+		if(username!=null){
+		
 		ResultSet rs = null;
 		try {
 			rs = UseJdbc.mfms(username);
@@ -89,6 +91,10 @@ public class MyFastModServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+	}else{
+		String site = new String(basePath + "IndexServlet");
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+		response.setHeader("Location", site);
 	}
-
+	}
 }
