@@ -43,6 +43,7 @@ public class MyFastModServlet extends HttpServlet {
 		List<Map> list =new ArrayList<Map>();//创建list集合用于存入map的键值对集合
 		try {
 			while(rs.next()){
+				String id = rs.getString("id");
 				String user = rs.getString("user");
 				String text = rs.getString("text");
 				String helper = rs.getString("helper");
@@ -52,6 +53,7 @@ public class MyFastModServlet extends HttpServlet {
 				String userphone = rs.getString("userphone");
 				//获取用循环接收数据库的表格信息
 				Map map = new HashMap();
+				map.put("id", id);
 				map.put("user", user);
 				map.put("text", text);
 				map.put("helper", helper);
