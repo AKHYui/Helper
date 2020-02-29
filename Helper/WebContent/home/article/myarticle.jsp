@@ -55,6 +55,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
                 <li> <a href="<%=basePath%>MyCommentServlet"><i class="fa fa-list"></i> 我的应答</a></li>
                 <li> <a href="<%=basePath%>MyFavoriteServlet"><i class="fa fa-star"></i> 我的收藏</a></li>
                 <li> <a href="<%=basePath%>FastModServlet"><i class="fa fa-rocket"></i> 快速模式</a></li>
+                <li> <a href="<%=basePath%>BulletinServlet"><i class="fa fa-calendar-o"></i> 公告查看</a></li>
                 <li> <a href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> 用户设置</a></li>
                 <li> <a href="<%= basePath %>SessionDel?exit=1"><i class="fa fa-sign-out"></i> 退出登录 </a></li>
             </ul>
@@ -63,7 +64,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
             
                 <button type="button" data-toggle="modal" data-target="#Aritcle" class="btn btn-primary btn-lg btn-block"><i class="fa fa-send"></i> 发布求助</button>
-                <h4>我发过的：</h4>
+                <%=session.getAttribute("myartkey") %>
                 <%@ include file="/home/module/myarticle_mod.jsp"%>
 <!--弹窗 -->
 <!-- 查看信息用的模态框 -->

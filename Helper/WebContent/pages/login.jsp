@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group"><input class="form-control" type="text" name="username" placeholder="请输入用户名"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="请输入密码"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">登录</button></div><a class="forgot" href="#">忘记密码？</a>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">登录</button></div>
     		<div class="form-group"><a class="forgot" href="<%=basePath %>pages/regist.jsp">没有账号？点此注册</a></div></form>
     </div>
     <script src="<%=basePath %>assets/js/jquery.min.js"></script>

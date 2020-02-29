@@ -1,5 +1,6 @@
 package com.index.servlet;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,7 +13,7 @@ import com.jdbc.support.UseJdbc;
 
 @WebServlet("/CommentServlet")
 public class CommentServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response){
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
@@ -21,6 +22,7 @@ public class CommentServlet extends HttpServlet {
 		
 		String id = "";
 		String atitle = request.getParameter("title");
+		String page = request.getParameter("page");
 		
 		ResultSet rs = null;
 		try {
@@ -38,9 +40,22 @@ public class CommentServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.print(id);
+		if(id.toString().equals("") == false){
 		String site = new String(basePath+"ArticleServlet?id="+id);
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
 		response.setHeader("Location", site);
+		}else{
+			if(page.equals("1") == true){
+			response.getWriter().write("<h4 align = center>404 Not Found，当前求助主题已经不存在了</h4>");
+			response.setHeader("refresh", "3;url="+basePath+"MyCommentServlet");
+			}else if(page.equals("2") == true){
+			response.getWriter().write("<h4 align = center>404 Not Found，当前求助主题已经不存在了</h4>");
+			response.setHeader("refresh", "3;url="+basePath+"MyFavoriteServlet");	
+			}else{
+				response.getWriter().write("<h4 align = center>404 Not Found，当前求助主题已经不存在了</h4>");
+				response.setHeader("refresh", "3;url="+basePath+"IndexServlet");
+			}
+		}
 	}
 
 }

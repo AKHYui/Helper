@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 28/02/2020 18:58:29
+ Date: 29/02/2020 12:57:23
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `article`  (
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of article
@@ -52,12 +52,7 @@ CREATE TABLE `bulletin`  (
 -- ----------------------------
 -- Records of bulletin
 -- ----------------------------
-INSERT INTO `bulletin` VALUES (7, '后台管理系统的公告', '2019-11-22 23:08:10');
-INSERT INTO `bulletin` VALUES (8, '公告', '2019-11-22 23:09:45');
-INSERT INTO `bulletin` VALUES (9, '公告2', '2020-01-22 18:54:05');
-INSERT INTO `bulletin` VALUES (10, '公告3', '2020-01-22 18:54:14');
-INSERT INTO `bulletin` VALUES (11, '公告4', '2020-01-22 18:54:20');
-INSERT INTO `bulletin` VALUES (12, '公告5', '2020-01-22 19:01:53');
+INSERT INTO `bulletin` VALUES (7, '感谢您使用信院互帮圈助手平台', '2019-11-22 23:08:10');
 
 -- ----------------------------
 -- Table structure for comment
@@ -71,7 +66,7 @@ CREATE TABLE `comment`  (
   `atitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '对应的发布标题',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of comment
@@ -93,7 +88,7 @@ CREATE TABLE `fastmod`  (
   `money` int(4) NOT NULL,
   `userphone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fastmod
@@ -111,12 +106,12 @@ CREATE TABLE `favorite`  (
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `atitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of favorite
 -- ----------------------------
-INSERT INTO `favorite` VALUES (12, 'user1000', '欢迎使用');
+INSERT INTO `favorite` VALUES (13, 'user1000', '欢迎使用');
 
 -- ----------------------------
 -- Table structure for user
@@ -142,7 +137,7 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '0', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
-INSERT INTO `user` VALUES (0043, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '男', '这个是user1000的自我介绍', '1997', '用户', '/Helper/upload/icon/449724.jpg');
+INSERT INTO `user` VALUES (0043, 'user1000', '123', 'akhyui@office520.vip', 23, '17634989197', '男', '_(:3」∠)_', '1997', '用户', '/Helper/upload/icon/449724.jpg');
 INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '13545612356', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
 INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '/Helper/upload/icon/73875216_p0_master1200.jpg');
 

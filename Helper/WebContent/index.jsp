@@ -38,8 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li class="nav-item" role="presentation"><a class="nav-link" href="#">主页</a></li>
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-list"></i>&nbsp;菜单</a>
                                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="<%=basePath %>IndexServlet"><i class="fa fa-home"></i>&nbsp;首页面</a>
-                                <a class="dropdown-item" role="presentation" href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> &nbsp;我的发布</a>
-                                <a class="dropdown-item" role="presentation" href="<%=basePath%>MyCommentServlet"><i class="fa fa-list"></i> &nbsp;我的应答</a>
+                                <a class="dropdown-item" role="presentation" href="<%=basePath%>FastModServlet"><i class="fa fa-flash"></i> &nbsp;极速求助</a>
                                 <a class="dropdown-item" role="presentation" href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> &nbsp;用户设置</a>
                                 </div>
                             </li>
@@ -52,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="container hero">
                 <div class="row">
                     <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
-                        <h1>信院互帮圈</h1>
+                        <h1>信院互帮圈助手平台</h1>
                         <p>Mutual aid platform, A Completely free online platform, You can submit your request and you can also help callers.</p><a href="IndexServlet">
                         <button class="btn btn-light btn-lg action-button" type="button">快速加入&nbsp;<i class="fa fa-angle-double-right"></i></button></a></div>
                     <div

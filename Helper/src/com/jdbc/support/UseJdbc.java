@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jdbc.support.JdbcUtil;
-
+/*
+ * 这里是JavaBean部分
+ */
+import com.sun.xml.internal.ws.message.stream.StreamHeader11;
 public class UseJdbc {
 	private static final long serialVersionUID = 1L;
 	static final String JDBC_DRIVER = JdbcUtil.getDriver();
@@ -685,5 +688,53 @@ public class UseJdbc {
 			conn.close();
 			return 2;
 		}
+	}
+	
+	//查找所有公告
+	public static ResultSet bull() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM bulletin order by id desc;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//查找我发布的主题
+	public static ResultSet myart(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM article WHERE user = '"+username+"' order by id desc;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//查找我的评论
+	public static ResultSet mycom(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM comment WHERE user = '"+username+"' order by id desc;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//查找我的所有收藏
+	public static ResultSet myfav(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM favorite WHERE user = '"+username+"' order by id desc;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
 	}
 }
