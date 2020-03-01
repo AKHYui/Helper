@@ -7,14 +7,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%
-	String se = session.getAttribute("username").toString();  //接收session 如果session错误
-	String error = new String(basePath+"login-error.jsp");	  //则返回到错误页面
-	if(se != "admin"){
-		response.setStatus(response.SC_MOVED_TEMPORARILY);
-    	response.setHeader("Location", error); 
-	}
-%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

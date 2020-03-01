@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 29/02/2020 12:57:23
+ Date: 01/03/2020 18:53:45
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `article`  (
   `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of article
@@ -47,7 +47,7 @@ CREATE TABLE `bulletin`  (
   `text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告内容',
   `time` datetime NOT NULL COMMENT '公告时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of bulletin
@@ -66,7 +66,7 @@ CREATE TABLE `comment`  (
   `atitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '对应的发布标题',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of comment
@@ -88,7 +88,7 @@ CREATE TABLE `fastmod`  (
   `money` int(4) NOT NULL,
   `userphone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fastmod
@@ -106,7 +106,7 @@ CREATE TABLE `favorite`  (
   `user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `atitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of favorite
@@ -131,14 +131,14 @@ CREATE TABLE `user`  (
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '0', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
-INSERT INTO `user` VALUES (0043, 'user1000', '123', 'akhyui@office520.vip', 23, '17634989197', '男', '_(:3」∠)_', '1997', '用户', '/Helper/upload/icon/449724.jpg');
-INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '13545612356', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
-INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '/Helper/upload/icon/73875216_p0_master1200.jpg');
+INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '6128880580', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '13656565656', '未知', '这个是自我介绍', '2000', '用户', '/Helper/upload/icon/icon.jpg');
+INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin123@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '/Helper/upload/icon/timg1597.jpg');
+INSERT INTO `user` VALUES (0047, 'user1000', '123', '591276457@qq.com', 23, '13753518074', '男', '这个人很懒，暂时还没有介绍', '1997', '用户', '/Helper/upload/icon/449724.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

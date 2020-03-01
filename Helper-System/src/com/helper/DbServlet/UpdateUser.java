@@ -19,8 +19,6 @@ public class UpdateUser extends HttpServlet {  //编辑用户
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response){
 		String id = request.getParameter("id");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		int i = Integer.parseInt(id);
@@ -31,7 +29,7 @@ public class UpdateUser extends HttpServlet {  //编辑用户
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		rs = UseJdbc.upus(id, username, password, email, phone);
+		rs = UseJdbc.upus(id, email, phone);
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);
@@ -44,12 +42,12 @@ public class UpdateUser extends HttpServlet {  //编辑用户
 				session.setAttribute("end", end);
 				session.setAttribute("page", page);
 				try {
-					response.sendRedirect(basePath+"func/users.jsp");
+					response.sendRedirect(basePath+"UserServlet");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				String site = new String(basePath + "func/users.jsp");
+				String site = new String(basePath + "UserServlet");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 			}

@@ -2,6 +2,7 @@ package com.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -176,7 +177,7 @@ public class UseJdbc {
 		return rs;
 	}
 	//编辑用户
-	public static int upus(String id, String username, String password, String email, String phone){
+	public static int upus(String id, String email, String phone){
 		int rs = 0;
 		Connection conn = null;
 		try {
@@ -185,7 +186,7 @@ public class UseJdbc {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String sql = "Update user SET username = '"+username+"', password = '"+password+"', email = '"+email+"', phone = '"+phone+"' WHERE id = "+id+"";
+		String sql = "Update user SET email = '"+email+"', phone = '"+phone+"' WHERE id = "+id+"";
 		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
@@ -207,42 +208,65 @@ public class UseJdbc {
 		}
 		return rs;
 	}
-	//普通用户登陆
-	public static int GuestLogin(String username, String password){
+	
+	//管理员登陆后台
+	public static int adminlogin(String username, String password) throws SQLException{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		int a = 1;
-		int b = 0;
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user WHERE username = '"+username+"' and password = '"+password+"' and permit = '管理员'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			return 0;
 		}
-		String sql = "SELECT * FROM user WHERE username = '"+username+"' and password = '"+password+"'";
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			if(rs.next()){
-				return a;
-			}else {
-				return b;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
 	}
+	
+	//入驻管理员登陆后台
+	public static int readminlogin(String username, String password) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user WHERE username = '"+username+"' and password = '"+password+"' and permit = '入驻管理员'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			return 0;
+		}
+		
+	}
+/*	
+	//查询所有用户
+	public static ResultSet alluser() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user order by id desc;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}*/
+	
+	//查询用户总数
+	public static ResultSet usermun() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT COUNT(*) total FROM user;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+		
+	}
+	
 }
