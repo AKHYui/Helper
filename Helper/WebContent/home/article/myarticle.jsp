@@ -63,7 +63,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
         <div class="page-content-wrapper">
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
             
-                <button type="button" data-toggle="modal" data-target="#Aritcle" class="btn btn-primary btn-lg btn-block"><i class="fa fa-send"></i> 发布求助</button>
+                <button type="button" data-toggle="modal" data-target="#Aritcle" class="btn btn-primary btn-lg btn-block"><i class="fa fa-send"></i> 发布主题</button>
                 <%=session.getAttribute("myartkey") %>
                 <%@ include file="/home/module/myarticle_mod.jsp"%>
 <!--弹窗 -->
@@ -73,7 +73,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleModalLabel">发布求助</h5>
+        <h5 class="modal-title" id="titleModalLabel">发布主题</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

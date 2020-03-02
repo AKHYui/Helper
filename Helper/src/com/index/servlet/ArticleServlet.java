@@ -19,7 +19,7 @@ import com.jdbc.support.UseJdbc;
 
 @WebServlet("/ArticleServlet")
 public class ArticleServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
@@ -99,12 +99,17 @@ public class ArticleServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		request.setAttribute("key_list",list);
-		try {
+		System.out.println(list.toString());
+		if(list.toString().equals("[]") == false){
+			String artkey = "<h4>应答：</h4>";
+			session.setAttribute("artkey", artkey);
+			request.setAttribute("key_list",list);
 			request.getRequestDispatcher("home/article/article.jsp").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}else{
+			String artkey = "<h4 class= text-center>当前还没有应答哦</h4>";
+			session.setAttribute("artkey", artkey);
+			request.setAttribute("key_list",list);
+			request.getRequestDispatcher("home/article/article.jsp").forward(request, response);
 		}
 	}
 }

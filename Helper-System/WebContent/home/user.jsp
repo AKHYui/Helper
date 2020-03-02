@@ -46,7 +46,7 @@ SELECT * FROM user order by id desc;
 <!-- Modal --> 
 <div class="modal fade" id="userinfo${row.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-  	<form action="<%=basePath%>UpdateUser" method="get" class="form-horizontal"">
+  	<form action="<%=basePath%>UpdateUser" method="get" class="form-horizontal">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titleModalLabel">用户信息</h5>
@@ -93,10 +93,10 @@ SELECT * FROM user order by id desc;
                                     <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
                                         <ul class="pagination">
                                             <li class="page-item"><a class="page-link" 
-                                            href="<%=basePath %>PageDown?begin=<%=session.getAttribute("begin")%>&end=<%=session.getAttribute("end")%>"
+                                            href="<%=basePath %>PageDown?begin=<%=session.getAttribute("begin")%>&end=<%=session.getAttribute("end")%>&page=user"
                                              aria-label="Previous"><span aria-hidden="true">«</span></a></li>
                                             <li class="page-item"><a class="page-link" 
-                                            href="<%=basePath %>PageUp?begin=<%=session.getAttribute("begin")%>&end=<%=session.getAttribute("end")%>" aria-label="Next">
+                                            href="<%=basePath %>PageUp?begin=<%=session.getAttribute("begin")%>&end=<%=session.getAttribute("end")%>&page=user" aria-label="Next">
                                             <span aria-hidden="true">»</span></a></li>
                                         </ul>
                                     </nav>

@@ -26,47 +26,88 @@ public class PageUp extends HttpServlet {
 		HttpSession session = request.getSession();
 		int begin_i = Integer.parseInt(request.getParameter("begin"));
 		int end_i = Integer.parseInt(request.getParameter("end"));
+		String page = request.getParameter("page");
 		
 		String username = (String) session.getAttribute("username");
 		if(username!=null){
+			if(page.equals("user") == true){
+				int userp = 0;
+				try {
+					userp = PageTools.userpageup(begin_i, end_i);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(userp == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/user.jsp").forward(request, response);
+				}else if(userp == 2){
+					begin_i = begin_i + 10;
+					end_i = end_i + 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/user.jsp").forward(request, response);
+				}
 		
-		ResultSet urs = null;
-		try {
-			urs = UseJdbc.usermun();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String all = "";
-		try {
-			while(urs.next()){
-				all = urs.getString("total");
+			}else if(page.equals("article") == true){
+				int artup = 0;
+				try {
+					artup = PageTools.articlepageup(begin_i, end_i);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(artup == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/article.jsp").forward(request, response);
+				}else if(artup == 2){
+					begin_i = begin_i + 10;
+					end_i = end_i + 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/article.jsp").forward(request, response);
+				}
+			}else if(page.equals("fastmod") == true){
+				int fastup = 0;
+				try {
+					fastup = PageTools.fastpageup(begin_i, end_i);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(fastup == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
+				}else if(fastup == 2){
+					begin_i = begin_i + 10;
+					end_i = end_i + 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
+				}
+			}else if(page.equals("comment") == true){
+				int comup = 0;
+				try {
+					comup = PageTools.comup(begin_i, end_i);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(comup == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
+				}else if(comup == 2){
+					begin_i = begin_i + 10;
+					end_i = end_i + 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
+				}
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		int all_i = Integer.parseInt(all);
-		System.out.println(all_i);
-		
-		if(end_i == all_i-1 || end_i > all_i-1){
-			begin_i = begin_i;
-			end_i = end_i;
-			System.out.println("没加");
-			session.setAttribute("begin", begin_i);
-			session.setAttribute("end", end_i);
-			request.getRequestDispatcher("home/user.jsp").forward(request, response);
-		}else{
-			begin_i = begin_i + 10;
-			end_i = end_i + 10;
-			System.out.println(begin_i);
-			System.out.println(end_i);
-			System.out.println("加了");
-			session.setAttribute("begin", begin_i);
-			session.setAttribute("end", end_i);
-			request.getRequestDispatcher("home/user.jsp").forward(request, response);
-		}
 		}else{
 			String site = new String(basePath + "IndexServlet");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);

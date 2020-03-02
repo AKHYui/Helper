@@ -166,6 +166,34 @@ SELECT COUNT(*) total FROM comment;
                     <div class="row">
                         <div class="col">
                         <h4>公告</h4>
+                        <button data-toggle="modal" data-target="#bulletin" class="btn btn-info btn-xs">发送公告</button>
+                        
+                        <!-- Modal --> 
+<div class="modal fade" id="bulletin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <form action="<%=basePath %>InsertBulletin" method="get" class="form-horizontal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleModalLabel">发布公告</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    	<div class="form-group">
+    	<label for="text" class="control-label col-sm-4 col-sm-offset-1">公告内容：</label><br/>
+    	<textarea name="text" cols="3" class="form-control"></textarea>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <input type="submit" value="确认" class="btn btn-primary">
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+<!-- 修改信息用的模态框 结束 -->
+                        
 <sql:setDataSource var="bull" driver="com.mysql.jdbc.Driver" 
      url="jdbc:mysql://localhost:3306/helper"
      user="root"  password="root"/>
@@ -179,6 +207,31 @@ SELECT * FROM bulletin;
                                         <div class="card-body">
                                             <p class="m-0">${row_b.text}</p>
                                             <p class="text-white-50 small m-0">${row_b.time}</p>
+                                            <p><button data-toggle="modal" data-target="#delbulletin${row_b.id}" class="btn btn-danger btn-xs">删除此公告</button></p>
+                                            
+<!-- Modal --> 
+<div class="modal fade" id="delbulletin${row_b.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="titleModalLabel">删除公告</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    	<div class="form-group">
+    	<p class="text-danger text-center">确定删除？</p>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <a href="<%=basePath%>DeleteBullent?id=${row_b.id}"><button type="button" class="btn btn-danger">删除</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 修改信息用的模态框 结束 -->
+                                            
                                         </div>
                                     </div>
                                 </div>

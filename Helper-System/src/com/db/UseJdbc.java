@@ -269,4 +269,51 @@ public class UseJdbc {
 		
 	}
 	
+	//查询主题总数
+	public static ResultSet artmun() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT COUNT(*) total FROM article;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//删除求助
+	public static int fastdel(int id) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "DELETE FROM fastmod WHERE Id = "+id+"";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return 1;
+	}
+	
+	//查询求助总数
+	public static ResultSet fastmun() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT COUNT(*) total FROM fastmod;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	//查询评论总数
+	public static ResultSet commun() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT COUNT(*) total FROM comment;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
 }

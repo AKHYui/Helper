@@ -275,7 +275,7 @@ public class UseJdbc {
 			return 0;
 		}else {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','位置','用户','/Helper-System/img/icon/icon.jpg')";
+			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','位置','用户','/Helper/upload/icon/icon.jpg')";
 			stmt = conn.createStatement();
 			rs = stmt.executeUpdate(sql1);
 			if(rs!=0){
@@ -416,7 +416,7 @@ public class UseJdbc {
 		
 	}
 	
-	//用户删除自己的求助
+	//用户删除自己的应答
 	public static int comdel(int id) throws SQLException{
 		int rs = 0;
 		Connection conn = null;
@@ -614,7 +614,6 @@ public class UseJdbc {
 			conn.close();
 			return 2;
 		}
-		
 	}
 	
 	//查询规定用户所有的快速发布

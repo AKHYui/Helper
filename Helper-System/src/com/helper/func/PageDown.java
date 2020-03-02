@@ -27,46 +27,64 @@ public class PageDown extends HttpServlet {
 		HttpSession session = request.getSession();
 		int begin_i = Integer.parseInt(request.getParameter("begin"));
 		int end_i = Integer.parseInt(request.getParameter("end"));
+		String page = request.getParameter("page");
+		int down = 0;
 		
 		String username = (String) session.getAttribute("username");
 		if(username!=null){
-		
-		ResultSet drs = null;
-		
-		try {
-			drs = UseJdbc.usermun();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String all = "";
-		try {
-			while(drs.next()){
-				all = drs.getString("total");
+			if(page.equals("user") == true){
+				down = PageTools.down(begin_i, end_i);
+				if(down == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/user.jsp").forward(request, response);
+				}else if(down == 2){
+					begin_i = begin_i - 10;
+					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/user.jsp").forward(request, response);
+				}
+			}else if(page.equals("fastmod") == true){
+				down = PageTools.down(begin_i, end_i);
+				if(down == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
+				}else if(down == 2){
+					begin_i = begin_i - 10;
+					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
+				}
+			}else if(page.equals("article") == true){
+				down = PageTools.down(begin_i, end_i);
+				if(down == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/article.jsp").forward(request, response);
+				}else if(down == 2){
+					begin_i = begin_i - 10;
+					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/article.jsp").forward(request, response);
+				}
+			}else if(page.equals("comment") == true){
+				down = PageTools.down(begin_i, end_i);
+				if(down == 1){
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
+				}else if(down == 2){
+					begin_i = begin_i - 10;
+					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
+				}
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		int all_i = Integer.parseInt(all);
-		
-		if(begin_i == 0){
-			begin_i = 0;
-			end_i = 9;
-			System.out.println("√ªºı");
-			session.setAttribute("begin", begin_i);
-			session.setAttribute("end", end_i);
-			request.getRequestDispatcher("home/user.jsp").forward(request, response);
-		}else{
-			begin_i = begin_i - 10;
-			end_i = end_i - 10;
-			System.out.println(begin_i);
-			System.out.println(end_i);
-			System.out.println("ºı¡À");
-			session.setAttribute("begin", begin_i);
-			session.setAttribute("end", end_i);
-			request.getRequestDispatcher("home/user.jsp").forward(request, response);
-		}
 		}else{
 			String site = new String(basePath + "IndexServlet");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);

@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			</form>
         			<hr/>
         			<div>
-        			<h4>应答:</h4>
+        			<%=session.getAttribute("artkey") %>
         			<p><c:forEach items="${key_list}" var="usr" varStatus="idx">
         			<div>
         			<!-- 之前发现的一个问题
