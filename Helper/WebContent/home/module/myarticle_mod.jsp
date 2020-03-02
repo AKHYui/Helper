@@ -39,7 +39,7 @@ String mbasePath = request.getScheme()+"://"+request.getServerName()+":"+request
         </button>
       </div>
       <div class="form-group">
-      <p>确认删除这个求助？</p>
+      <p>确认删除这个主题？</p>
       </div>
       	<div class="modal-footer">
         <a href="<%=mbasePath%>GuestDeleteArticle?id=${myart.id}">确定</a>
