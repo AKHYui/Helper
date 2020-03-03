@@ -1,5 +1,6 @@
 package com.helper.DbServlet;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import com.db.UseJdbc;
 
 @WebServlet("/DeleteFastmod")
 public class DeleteFastMod extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = request.getParameter("id");  //这里接收的ID是发布的文章的ID
 		int i = Integer.parseInt(id);
 		int rs = 0;
@@ -22,6 +23,9 @@ public class DeleteFastMod extends HttpServlet {
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
+		String username_se = (String) session.getAttribute("username");
+		
+		if(username_se.equals("admin")==true){
 			try {
 				rs = UseJdbc.fastdel(i);
 			} catch (SQLException e) {
@@ -36,6 +40,10 @@ public class DeleteFastMod extends HttpServlet {
 				response.setHeader("Location", site);
 				//conn.close();
 			}
+		}else{
+			response.getWriter().write("您当前没有此权限");
+			response.setHeader("refresh", "3;url="+basePath+"FastModServlet");
 		}
+	}
 
 }

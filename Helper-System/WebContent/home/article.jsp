@@ -8,6 +8,15 @@ String imgbasePath = request.getScheme()+"://"+request.getServerName()+":"+reque
 <%
 		int begin_s = Integer.parseInt(session.getAttribute("begin").toString());
 		int end_s = Integer.parseInt(session.getAttribute("end").toString());
+		String ad = session.getAttribute("ad").toString();
+		String button = "";
+		if(ad.equals("admin") == true){
+			button = "";
+		}else if(ad.equals("registadmin") == true){
+			button = "disabled= disabled ";
+		}else{
+			button = "disabled= disabled ";
+		}
 %>
 <sql:setDataSource var="article" driver="com.mysql.jdbc.Driver" 
      url="jdbc:mysql://localhost:3306/helper"
@@ -65,7 +74,7 @@ SELECT * FROM article order by id desc;
       	</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-        <a href="<%=basePath%>DeleteArticle?id=${row.id}"><button type="button" class="btn btn-danger">删除</button></a>
+        <a href="<%=basePath%>DeleteArticle?id=${row.id}"><button type="button" <%=button %> class="btn btn-danger">删除</button></a>
       </div>
     </div>
     </form>

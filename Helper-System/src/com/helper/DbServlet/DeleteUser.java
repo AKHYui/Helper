@@ -18,7 +18,7 @@ import com.db.UseJdbc;
 
 public class DeleteUser extends HttpServlet {  //删除用户
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String id = request.getParameter("id");
 		int i = Integer.parseInt(id);
 		int rs = 0;
@@ -28,6 +28,9 @@ public class DeleteUser extends HttpServlet {  //删除用户
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
+		String username_se = (String) session.getAttribute("username");
+		if(username_se.equals("admin") == true){
+		
 		if (i < 2) {
 			String warn;
 			warn = "You can't Delet Admin!";
@@ -47,5 +50,9 @@ public class DeleteUser extends HttpServlet {  //删除用户
 			
 				
 		}
+	}else{
+		response.getWriter().write("您当前没有此权限");
+		response.setHeader("refresh", "3;url="+basePath+"UserServlet");
+	}
 	}
 }

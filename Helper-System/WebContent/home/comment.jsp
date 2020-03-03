@@ -4,6 +4,15 @@
 <%
 		int begin_s = Integer.parseInt(session.getAttribute("begin").toString());
 		int end_s = Integer.parseInt(session.getAttribute("end").toString());
+		String ad = session.getAttribute("ad").toString();
+		String button = "";
+		if(ad.equals("admin") == true){
+			button = "";
+		}else if(ad.equals("registadmin") == true){
+			button = "disabled= disabled ";
+		}else{
+			button = "disabled= disabled ";
+		}
 %>
 
 <sql:setDataSource var="comment" driver="com.mysql.jdbc.Driver" 
@@ -40,7 +49,7 @@ SELECT * FROM comment order by id desc;
                                             <td>${row.user}</td>
                                             <td>${row.text}</td>
                                             <td>${row.time}</td>
-                                            <td><a href="<%=basePath%>DeleteComment?id=${row.id}"><button type="button" class="btn btn-info">删除
+                                            <td><a href="<%=basePath%>DeleteComment?id=${row.id}"><button type="button" <%=button %> class="btn btn-info">删除
 </button></a></td>
 
                                         </tr>

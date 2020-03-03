@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>互帮圈</title>
+    <title>信院互帮圈助手平台</title>
     <link rel="stylesheet" href="<%=basePath %>assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath %>assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="<%=basePath %>assets/css/Sidebar-Menu-1.css">
@@ -54,7 +54,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
                 <li> <a href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> 我的发布</a></li>
                 <li> <a href="<%=basePath%>MyCommentServlet"><i class="fa fa-list"></i> 我的应答</a></li>
                 <li> <a href="<%=basePath%>MyFavoriteServlet"><i class="fa fa-star"></i> 我的收藏</a></li>
-                <li> <a href="<%=basePath%>FastModServlet"><i class="fa fa-rocket"></i> 快速模式</a></li>
+                <li> <a href="<%=basePath%>FastModServlet"><i class="fa fa-rocket"></i> 快速求助</a></li>
                 <li> <a href="<%=basePath%>BulletinServlet"><i class="fa fa-calendar-o"></i> 公告查看</a></li>
                 <li> <a href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> 用户设置</a></li>
                 <li> <a href="<%= basePath %>SessionDel?exit=1"><i class="fa fa-sign-out"></i> 退出登录 </a></li>

@@ -1,5 +1,6 @@
 package com.helper.DbServlet;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import com.db.UseJdbc;
 @WebServlet("/DeleteBullent")
 public class DeleteBullent extends HttpServlet {  //删除公告
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response){
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		String id = request.getParameter("id");  //这里接收的ID是发布的公告的ID
 		int i = Integer.parseInt(id);
 		int rs = 0;
@@ -25,6 +26,8 @@ public class DeleteBullent extends HttpServlet {  //删除公告
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
+		String username_se = (String) session.getAttribute("username");
+		if(username_se.equals("admin")==true || username_se.equals("registadmin")==true){
 		rs = UseJdbc.debu(id);
 			if (rs != 0) {
 				String info = "OK";
@@ -34,5 +37,9 @@ public class DeleteBullent extends HttpServlet {  //删除公告
 				response.setHeader("Location", site);
 				//conn.close();
 			}
+	}else{
+		response.getWriter().write("您当前没有此权限");
+		response.setHeader("refresh", "3;url="+basePath+"IndexServlet");
+	}
 	}
 }

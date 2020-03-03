@@ -239,6 +239,7 @@ public class UseJdbc {
 			conn.close();
 			return 1;
 		}else{
+			conn.close();
 			return 0;
 		}
 		
@@ -265,6 +266,7 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM user;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
+		conn.close();
 		return rs;
 		
 	}
@@ -278,6 +280,7 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM article;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
+		conn.close();
 		return rs;
 	}
 	
@@ -303,6 +306,7 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM fastmod;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
+		conn.close();
 		return rs;
 	}
 	//查询评论总数
@@ -314,6 +318,43 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM comment;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
+		conn.close();
 		return rs;
+	}
+	//查询数据库中是否有重复用户名
+	public static int checkuser(String username) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user WHERE username = '"+username+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	//添加入驻管理员
+	public static int addadmin(String username, String password, String phone, int age, int birth) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) "
+				+ "VALUES ('"+username+"','"+password+"','0',"+age+",'"+phone+"','未知','这个人很懒，暂时还没有介绍',"+birth+",'入驻管理员','/Helper/upload/icon/icon.jpg')";
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		if(rs!=0){
+			conn.close();
+			return 1;
+		}else {
+			conn.close();
+			return 2;
+		}
+		
 	}
 }

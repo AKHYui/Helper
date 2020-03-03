@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>login</title>
+    <title>用户登录</title>
     <link rel="stylesheet" href="<%=basePath %>assets/login_assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath %>assets/login_assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="<%=basePath %>assets/login_assets/css/Login-Form-Dark.css">
@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <div class="login-dark">
         <form action="<%=basePath %>GuestLogin" method="post">
-            <h2 class="sr-only">Login Form</h2>
+            <h2 class="sr-only">用户登录</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group"><input class="form-control" type="text" name="username" placeholder="请输入用户名"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="请输入密码"></div>
