@@ -266,7 +266,6 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM user;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
-		conn.close();
 		return rs;
 		
 	}
@@ -280,7 +279,6 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM article;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
-		conn.close();
 		return rs;
 	}
 	
@@ -293,7 +291,6 @@ public class UseJdbc {
 		Statement stmt = null;
 		stmt = conn.createStatement();
 		rs = stmt.executeUpdate(sql);
-		conn.close();
 		return 1;
 	}
 	
@@ -306,7 +303,6 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM fastmod;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
-		conn.close();
 		return rs;
 	}
 	//查询评论总数
@@ -318,7 +314,6 @@ public class UseJdbc {
 		String sql = "SELECT COUNT(*) total FROM comment;";
 		stmt = conn.prepareStatement(sql);
 		rs = stmt.executeQuery();
-		conn.close();
 		return rs;
 	}
 	//查询数据库中是否有重复用户名
