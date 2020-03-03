@@ -38,7 +38,8 @@ public class InsertBulletin extends HttpServlet {  //Ìí¼Ó¹«¸æ
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String username_se = (String) session.getAttribute("username");
-		if(username_se.equals("admin")==true || username_se.equals("registadmin")==true){
+		String ad = (String) session.getAttribute("ad");
+		if(username_se.equals("admin")==true || ad.equals("registadmin")==true){
 		rs = UseJdbc.inbu(text, time);
 			if (rs != 0) {
 				String info = "OK";
