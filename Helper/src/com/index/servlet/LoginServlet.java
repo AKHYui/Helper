@@ -26,9 +26,10 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String se = (String) session.getAttribute("se");
+		String ak = (String) session.getAttribute("ak");
 		
 		String userip = request.getRemoteAddr();//记得改回来
-		String json_s = UseApi.UseApi(userip);
+		String json_s = UseApi.UseApi(ak, userip);
 		String addr = IpCheck.GetData(json_s);
 		System.out.println(addr);
 		session.setAttribute("nowaddress", addr);
