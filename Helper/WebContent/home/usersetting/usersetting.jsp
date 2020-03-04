@@ -43,6 +43,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
     </div>
     <input type="text" disabled="disabled" class="form-control" value="${row.permit}">
   </div>
+  
 </div>
 </div>
 <div class="col-md-6">
@@ -83,6 +84,13 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
 </div>
 </div>
 </div>
+<br/>
+<div class="input-group mb-3">
+<div class="input-group-prepend">
+      <span class="input-group-text">当前所在地</span>
+    </div>
+    <input type="text" disabled="disabled" class="form-control" value="<%=session.getAttribute("nowaddress")%>">
+  </div>
 <br/>
 <div class="form-group">
       <span class="input-group-text">自我介绍</span>

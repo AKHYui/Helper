@@ -24,6 +24,8 @@ public class CommentServlet extends HttpServlet {
 		String atitle = request.getParameter("title");
 		String page = request.getParameter("page");
 		
+		System.out.println(atitle);
+		
 		ResultSet rs = null;
 		try {
 			rs = UseJdbc.tid(atitle);

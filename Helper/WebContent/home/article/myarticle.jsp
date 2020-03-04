@@ -62,7 +62,6 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
         </div>
         <div class="page-content-wrapper">
             <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars"></i></a>
-            
                 <button type="button" data-toggle="modal" data-target="#Aritcle" class="btn btn-primary btn-lg btn-block"><i class="fa fa-send"></i> 发布主题</button>
                 <%=session.getAttribute("myartkey") %>
                 <%@ include file="/home/module/myarticle_mod.jsp"%>
@@ -86,7 +85,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
     	<label for="title" class="control-label col-sm-4 col-sm-offset-1"><i class="fa fa-tag"></i>&nbsp;主&nbsp;题:</label>
     	<input type="text" class="form-control" name="title" placeholder="至少2个字符" id="title" value="" ><br/>
     	<label for="addr" class="control-label col-sm-4 col-sm-offset-1"><i class="fa fa-flag"></i>&nbsp;地&nbsp;点:</label>
-    	<input type="text" class="form-control" name="addr" placeholder="至少3个字符" id="addr" value=""><br/>
+    	<input type="text" class="form-control" name="addr" placeholder="至少3个字符" id="addr" value="<%=session.getAttribute("nowaddress")%>"><br/>
       	<label for="text" class="control-label col-sm-4 col-sm-offset-1"><i class="fa fa-pencil"></i>&nbsp;求助内容:</label>
       	<textarea class="form-control" rows="10" id="text" placeholder="至少15个字符" name="text"></textarea>
       	 <!-- 

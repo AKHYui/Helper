@@ -41,7 +41,8 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
                 <c:forEach var="row_i" items="${result.rows}">
                 <div id="icon"><img width="30px" src="${row_i.icon}"></div>
                 </c:forEach>
-				<div id="user"><a href="#"><%= session.getAttribute("username")%> </a></div>
+				<div id="user"><a href="#"><%= session.getAttribute("username")%> </a>
+				</div>
 				</div></li>
                 <li> <a href="<%=basePath%>IndexServlet"><i class="fa fa-home"></i> 首 页</a></li>
                 <li> <a href="<%=basePath%>MyArticleServlet"><i class="fa fa-send"></i> 我的发布</a></li>

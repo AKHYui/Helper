@@ -13,15 +13,15 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/mysql-connector-java-5.1.39-bin.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/standard-1.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/commons-beanutils-1.9.4.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/commons-collections4-4.4.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/commons-lang3-3.9.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/ezmorph-1.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/commons-fileupload-1.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/jre/lib/ext/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/commons-lang3-3.9.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse_new/workspace/HelperSystem_jar/standard-1.1.2.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

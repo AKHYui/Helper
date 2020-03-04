@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="<%=basePath %>IndexServlet"><i class="fa fa-home"></i>&nbsp;首页面</a>
                                 <a class="dropdown-item" role="presentation" href="<%=basePath%>FastModServlet"><i class="fa fa-flash"></i> &nbsp;极速求助</a>
                                 <a class="dropdown-item" role="presentation" href="<%=basePath%>UserSettingServlet"><i class="fa fa-user"></i> &nbsp;用户设置</a>
+                                <a class="dropdown-item" role="presentation" href="#"><%=request.getRemoteAddr()%></a>
                                 </div>
                             </li>
                         </ul>
