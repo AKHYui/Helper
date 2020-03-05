@@ -158,6 +158,40 @@ SELECT COUNT(*) total FROM comment;
                         </div>
                     </div>
                     <div class="row">
+                    <div class="col">
+                    <h4>定位设置</h4>
+                    <button type="button" data-toggle="modal" data-target="#baiduapi" class="btn btn-primary btn-xs">修改key</button>
+                    <a href="<%=basePath%>SwitchApi?nowstatus=<%=session.getAttribute("nowstatus")%>"><button type="button" class="btn btn-info btn-xs"><%=session.getAttribute("button") %></button></a>
+                    
+<!-- Modal --> 
+<div class="modal fade" id="baiduapi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <form action="<%=basePath %>UpdateBaiduApi" method="get" class="form-horizontal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleModalLabel">修改BaiduaMap API Key</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    	<div class="form-group col-md-12">
+    	<label for="text" class="control-label col-sm-4 col-sm-offset-1">Key：</label><br/>
+    	<textarea name="key" cols="3" class="form-control"></textarea>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <input type="submit" value="确认" class="btn btn-primary">
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+<!-- 修改信息用的模态框 结束 -->
+                    
+                    </div>
+                    </div>
+                    <div class="row">
                         <div class="col">
                         <h4>公告</h4>
                         <button data-toggle="modal" data-target="#bulletin" class="btn btn-info btn-xs">发送公告</button>

@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 04/03/2020 22:13:09
+ Date: 05/03/2020 11:15:28
 */
 
 SET NAMES utf8mb4;
@@ -37,6 +37,22 @@ CREATE TABLE `article`  (
 -- Records of article
 -- ----------------------------
 INSERT INTO `article` VALUES (8, '欢迎使用', '欢迎使用信院互帮圈平台，在这个平台您可以发布求助，也可以回应求助，求助内容禁止违反校规。', '2019-11-16 18:18:54', 'admin', '平台本部', '/Helper/upload/image/welcome.jpg');
+
+-- ----------------------------
+-- Table structure for baiduapi
+-- ----------------------------
+DROP TABLE IF EXISTS `baiduapi`;
+CREATE TABLE `baiduapi`  (
+  `id` int(1) NOT NULL COMMENT '密钥id',
+  `ak` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '百度地图的开发者key',
+  `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '是否开启定位api',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of baiduapi
+-- ----------------------------
+INSERT INTO `baiduapi` VALUES (1, 'LowbbhGX04PYPpSObHVZoCdTjzaHScjm', 'on');
 
 -- ----------------------------
 -- Table structure for bulletin

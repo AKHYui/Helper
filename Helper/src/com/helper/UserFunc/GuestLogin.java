@@ -27,7 +27,6 @@ public class GuestLogin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String username = new String(request.getParameter("username").getBytes("ISO8859-1"),"UTF-8");
 		String password = new String(request.getParameter("password").getBytes("ISO8859-1"),"UTF-8");
-		String ak = new String(request.getParameter("ak").getBytes("ISO8859-1"),"UTF-8");
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/";
 		String se = "1";
@@ -38,7 +37,6 @@ public class GuestLogin extends HttpServlet {
 			response.getWriter().write("登陆成功,3秒后进入页面");
 			response.setHeader("refresh", "3;url="+basePath+"Helper/");
 			session.setAttribute("username", username);
-			session.setAttribute("ak", ak);
 			session.setAttribute("se", se);
 		}else{
 			response.getWriter().write("登陆失败,0秒后回到登陆");

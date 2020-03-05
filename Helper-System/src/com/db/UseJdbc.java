@@ -352,4 +352,57 @@ public class UseJdbc {
 		}
 		
 	}
+	//修改百度api
+	public static int updateapi(String ak) throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update baiduapi set ak = '"+ak+"' WHERE id = 1";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return rs;
+	}
+	//检查激活状态
+	public static int checkstatus() throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM baiduapi WHERE id = 1 and status = 'on'; ";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	//转换status on
+	public static int statuson() throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update baiduapi set status = 'off' WHERE id = 1";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return rs;
+	}
+	//转换status off
+	public static int statusoff() throws SQLException{
+		int rs = 0;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "Update baiduapi set status = 'on' WHERE id = 1";
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
+		return rs;
+	}
 }

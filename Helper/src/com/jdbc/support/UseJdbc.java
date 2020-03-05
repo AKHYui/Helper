@@ -736,4 +736,34 @@ public class UseJdbc {
 		rs = stmt.executeQuery();
 		return rs;
 	}
+	
+	//²éÑ¯api×´Ì¬
+	public static int checkstatus() throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM baiduapi WHERE id = 1 and status = 'on'; ";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	
+	//²éÑ¯ak
+	public static ResultSet getak() throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT ak FROM baiduapi WHERE id = 1;";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
 }

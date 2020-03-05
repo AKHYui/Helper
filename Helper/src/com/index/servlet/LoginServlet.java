@@ -1,6 +1,7 @@
 package com.index.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,13 +27,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		String se = (String) session.getAttribute("se");
-		String ak = (String) session.getAttribute("ak");
 		
-		String userip = request.getRemoteAddr();//记得改回来
-		String json_s = UseApi.UseApi(ak, userip);
-		String addr = IpCheck.GetData(json_s);
-		System.out.println(addr);
-		session.setAttribute("nowaddress", addr);
 		/*
 		com.alibaba.fastjson.JSONObject jsonObject = 
 				com.alibaba.fastjson.JSONObject.parseObject(json_s);
@@ -56,6 +51,22 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else{
+			
+			String ak = "";
+			
+			try {
+				ak = UseApi.getak();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String userip = request.getRemoteAddr();//记得改回来
+			//String userip = "118.74.119.220";
+			String json_s = UseApi.UseApi(ak, userip);
+			String addr = IpCheck.GetData(json_s);
+			System.out.println(addr);
+			session.setAttribute("nowaddress", addr);
+			
 			try {
 				request.getRequestDispatcher("home/index.jsp").forward(request, response);
 			} catch (ServletException e) {
