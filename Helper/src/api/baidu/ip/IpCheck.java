@@ -58,11 +58,11 @@ public class IpCheck {
 		}else if(r.equals("1") == true){
 			//status非0说明API故障
 			System.out.println("API内部错误");
-			String addr = "API错误查询失败";
+			String addr = "管理员关闭了API或者API错误";
 			return addr;
 		}else{
 			System.out.println("其他错误");
-			String addr = "API错误查询失败";
+			String addr = "管理员关闭了API或者API错误";
 			return addr;
 		}
 	
