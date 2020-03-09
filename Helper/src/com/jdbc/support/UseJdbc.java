@@ -766,4 +766,37 @@ public class UseJdbc {
 		rs = stmt.executeQuery();
 		return rs;
 	}
+	
+	//查询指定用户信息
+	public static ResultSet getusermes(String username) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user WHERE username = '"+username+"'";
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		return rs;
+	}
+	
+	//查询用户有没有发布主题
+	public static int checkart(String username) throws SQLException{
+		ResultSet rs = null;
+		Statement stmt = null;
+		Connection conn = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		
+		String sql = "SELECT * FROM article WHERE user = '"+username+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+		
+	}
 }

@@ -22,7 +22,7 @@ SELECT * from article order by id desc;
                             <h3 class="text-center">${row.title}</h3>
                         </div>
                         <div class="text-center">
-                        <p ><small><a class="text-muted" href="#">${row.user}</a>·${row.time}·${row.addr}</small></p>
+                        <p ><small>${row.user}·${row.time}·${row.addr}</small></p>
                         <p class="product">${row.text}</p>
                         <div class="row">
     						<!-- <div class="col-sm-12 col-md-12">

@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <div class="intro">
                         <h1 class="text-center"><%=title %></h1>
-                        <p class="text-center"><span class="by">by</span> <a href="#"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p><img class="img-fluid" src="<%=img %>"></div>
+                        <p class="text-center"><span class="by">by</span> <a href="<%=basePath%>UserMessage?user=<%=user%>"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p><img class="img-fluid" src="<%=img %>"></div>
                     <div class="text">
                         <p><%=text %></p>
                     </div>
