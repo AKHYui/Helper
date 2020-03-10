@@ -107,18 +107,34 @@ public class PageTools {
 	}
 	//用在向前一页
 	public static int down(int begin, int end){
-		if(begin == 0){
+		if(begin == 0 && begin == end - 9){
 			begin = 0;
 			end = 9;
 			System.out.println("没减");
 			return 1;
+		}else if(begin == end - 9){
+			if(begin%10==0){
+				begin = begin - 10;
+				end = end - 10;
+				System.out.println(begin);
+				System.out.println(end);
+				System.out.println("减了");
+				return 2;
+			}else{
+				begin = 0;
+				end = 9;
+				System.out.println(begin);
+				System.out.println(end);
+				System.out.println("错了");
+				return 3;
+			}
 		}else{
-			begin = begin - 10;
-			end = end - 10;
+			begin = 0;
+			end = 9;
 			System.out.println(begin);
 			System.out.println(end);
-			System.out.println("减了");
-			return 2;
+			System.out.println("错了");
+			return 3;
 		}
 	}
 }

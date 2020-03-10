@@ -44,6 +44,12 @@ public class PageDown extends HttpServlet {
 					session.setAttribute("begin", begin_i);
 					session.setAttribute("end", end_i);
 					request.getRequestDispatcher("home/user.jsp").forward(request, response);
+				}else if(down == 3){
+					begin_i = 0;
+					end_i = 9;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/user.jsp").forward(request, response);
 				}
 			}else if(page.equals("fastmod") == true){
 				down = PageTools.down(begin_i, end_i);
@@ -54,6 +60,12 @@ public class PageDown extends HttpServlet {
 				}else if(down == 2){
 					begin_i = begin_i - 10;
 					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
+				}else if(down == 3){
+					begin_i = 0;
+					end_i = 9;
 					session.setAttribute("begin", begin_i);
 					session.setAttribute("end", end_i);
 					request.getRequestDispatcher("home/fastmod.jsp").forward(request, response);
@@ -70,6 +82,12 @@ public class PageDown extends HttpServlet {
 					session.setAttribute("begin", begin_i);
 					session.setAttribute("end", end_i);
 					request.getRequestDispatcher("home/article.jsp").forward(request, response);
+				}else if(down == 3){
+					begin_i = 0;
+					end_i = 9;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/article.jsp").forward(request, response);
 				}
 			}else if(page.equals("comment") == true){
 				down = PageTools.down(begin_i, end_i);
@@ -80,6 +98,12 @@ public class PageDown extends HttpServlet {
 				}else if(down == 2){
 					begin_i = begin_i - 10;
 					end_i = end_i - 10;
+					session.setAttribute("begin", begin_i);
+					session.setAttribute("end", end_i);
+					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
+				}else if(down == 3){
+					begin_i = 0;
+					end_i = 9;
 					session.setAttribute("begin", begin_i);
 					session.setAttribute("end", end_i);
 					request.getRequestDispatcher("home/comment.jsp").forward(request, response);
