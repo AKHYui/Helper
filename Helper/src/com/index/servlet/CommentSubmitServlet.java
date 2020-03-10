@@ -27,6 +27,7 @@ public class CommentSubmitServlet extends HttpServlet {
 				+ "/";
 		// 设置响应内容类型
 		response.setContentType("text/html;charset=UTF-8");
+		System.out.println(answer);
 		if (answer !=""){
 		int css = 0;
 		try {
