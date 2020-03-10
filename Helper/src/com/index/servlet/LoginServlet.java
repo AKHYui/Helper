@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			String userip = request.getRemoteAddr();//记得改回来
 			//String userip = "118.74.119.220";
-			String json_s = UseApi.UseApi(ak, userip);
+			String json_s = UseApi.UseApiKey(ak, userip);
 			String addr = IpCheck.GetData(json_s);
 			System.out.println(addr);
 			session.setAttribute("nowaddress", addr);

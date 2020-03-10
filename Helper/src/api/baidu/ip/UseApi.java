@@ -8,7 +8,7 @@ import com.jdbc.support.UseJdbc;
 import net.sf.json.JSONObject;
 
 public class UseApi {
-	public static String UseApi(String ak, String userip){
+	public static String UseApiKey(String ak, String userip){
 		String url = "http://api.map.baidu.com/location/"
 				+ "ip?ak="+ak+"&ip="+userip+"&coor=bd09ll";
 		JSONObject json = IpCheck.doGetStr(url);
