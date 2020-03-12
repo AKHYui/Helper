@@ -55,8 +55,10 @@ public class GuestRegist extends HttpServlet {
 			response.setHeader("refresh", "3;url="+basePath+"IndexServlet");
 		}else if(i == 0){
 			response.getWriter().write("该用户名已被注册");
+			response.setHeader("refresh", "3;url="+basePath+"pages/regist.jsp");
 		}else if(i == 2){
 			response.getWriter().write("注册出错");
+			response.setHeader("refresh", "3;url="+basePath+"pages/regist.jsp");
 		}
 		}
 	}

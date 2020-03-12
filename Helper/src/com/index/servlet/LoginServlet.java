@@ -28,18 +28,6 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String se = (String) session.getAttribute("se");
 		
-		/*
-		com.alibaba.fastjson.JSONObject jsonObject = 
-				com.alibaba.fastjson.JSONObject.parseObject(json_s);
-		String r = jsonObject.getString("status");
-		System.out.println(r);
-		
-		
-		String url = "http://api.map.baidu.com/location/ip?ak=LowbbhGX04PYPpSObHVZoCdTjzaHScjm&ip=192.168.31.12&coor=bd09ll";
-		JSONObject json = IpCheck.doGetStr(url);
-		String json_s = json.toString();
-		System.out.println(json_s);
-		*/
 		if(se == null){
 			try {
 				request.getRequestDispatcher("pages/login.jsp").forward(request, response);
@@ -66,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 			String addr = IpCheck.GetData(json_s);
 			System.out.println(addr);
 			session.setAttribute("nowaddress", addr);
-			
 			try {
 				request.getRequestDispatcher("home/index.jsp").forward(request, response);
 			} catch (ServletException e) {

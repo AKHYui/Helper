@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <div class="intro">
                         <h1 class="text-center"><%=title %></h1>
-                        <p class="text-center"><span class="by">by</span> <a href="<%=basePath%>UserMessage?user=<%=user%>"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p><img class="img-fluid" src="<%=img %>"></div>
+                        <p class="text-center"><span class="by">by</span> <a href="<%=basePath%>UserMessage?user=<%=user%>"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p><img class="img-fluid" src="<%=basePath %>upload/image/<%=img %>"></div>
                     <div class="text">
                         <p><%=text %></p>
                     </div>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <form method="get" action="<%=basePath %>CommentSubmitServlet" class="form-horizontal">
                     <div class="form-group">
                     <c:forEach var="row_i" items="${result.rows}">
-                    <div id="icon"><img width="25px" src="${row_i.icon}"></div>
+                    <div id="icon"><img width="25px" src="<%=basePath %>upload/icon/${row_i.icon}"></div>
                     </c:forEach>
         			<div id="text"><%=username %>&nbsp;<i class="fa fa-comment"></i></div><textarea class="form-control" name="answer" placeholder="赶快回应TA吧"></textarea>
         			<input type="hidden" class="form-control"  name="username" value="<%=username %>">
@@ -107,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					SELECT icon from user WHERE username = "${usr.cuser}";
 					</sql:query>
         			<c:forEach var="row" items="${result.rows}">
-        			<div id="icon"><img width="30px" src="${row.icon}"></div>
+        			<div id="icon"><img width="30px" src="<%=basePath %>upload/icon/${row.icon}"></div>
         			</c:forEach>
         			<div id="text"><p class="font-weight-bold">${usr.cuser}</p></div>&nbsp;&nbsp;&nbsp;&nbsp;
         			<div id="time"><p>${usr.ctime}</p></div>

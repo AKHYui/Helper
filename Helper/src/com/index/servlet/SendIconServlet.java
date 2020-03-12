@@ -23,8 +23,8 @@ public class SendIconServlet extends HttpServlet {
 		String path = request.getContextPath();
     	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
     			+ "/";
-    	String icon_basePath = path+"/";
-    	iconname = icon_basePath+"upload/icon/"+iconname;
+    	//String icon_basePath = path+"/";
+    	//iconname = icon_basePath+"upload/icon/"+iconname;
     	
     	System.out.println("Í¼Æ¬Ãû"+iconname);
     	

@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="image-holder"></div>
             <form action="<%=basePath %>GuestRegist" method="post">
                 <h2 class="text-center"><strong>注 册</strong></h2>
-                <div class="form-group"><input class="form-control" type="username" name="username" placeholder="用户名"></div>
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="用户名"></div>
                 <div class="form-group"><input class="form-control" type="password" name="password" placeholder="密 码"></div>
                 <div class="form-group"><input class="form-control" type="email" name="email" placeholder="邮 箱"></div><button class="btn btn-primary btn-block" type="submit">注 册</button></form>
         </div>

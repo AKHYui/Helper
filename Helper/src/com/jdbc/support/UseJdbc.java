@@ -11,7 +11,7 @@ import com.jdbc.support.JdbcUtil;
 /*
  * 这里是JavaBean部分
  */
-import com.sun.xml.internal.ws.message.stream.StreamHeader11;
+
 public class UseJdbc {
 	private static final long serialVersionUID = 1L;
 	static final String JDBC_DRIVER = JdbcUtil.getDriver();
@@ -212,48 +212,22 @@ public class UseJdbc {
 		return rs;
 	}
 	//普通用户登陆
-	public static int GuestLogin(String username, String password){
+	public static int GuestLogin(String username, String password) throws SQLException{
 		ResultSet rs = null;
 		Statement stmt = null;
 		Connection conn = null;
-		int a = 1;
-		int b = 0;
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String sql = "SELECT * FROM user WHERE username = '"+username+"' and password = '"+password+"'";
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM user WHERE "
+				+ "username = '"+username+"' and password = '"+password+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
 			if(rs.next()){
-				return a;
+				conn.close();
+				return 1;
 			}else {
-				return b;
+				conn.close();
+				return 0;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
 	}
 	
 	//注册用户
@@ -275,7 +249,7 @@ public class UseJdbc {
 			return 0;
 		}else {
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','未知','用户','/Helper/upload/icon/icon.jpg')";
+			String sql1 = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) VALUES ('"+username+"','"+password+"','"+email+"',0,'0','未知','这个人很懒，暂时还没有介绍','未知','用户','icon.jpg')";
 			stmt = conn.createStatement();
 			rs = stmt.executeUpdate(sql1);
 			if(rs!=0){
@@ -289,7 +263,7 @@ public class UseJdbc {
 		
 	}
 	
-	//查询指定求助
+	//查询指定主题
 	public static ResultSet rss(int id) throws SQLException{
 		ResultSet rs = null;
 		Connection conn = null;

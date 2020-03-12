@@ -52,7 +52,7 @@ String iconbasePath = request.getScheme()+"://"+request.getServerName()+":"+requ
         <p><c:forEach items="${key_list}" var="usr" varStatus="idx">
             <div class="row">
             <div class="col-md-12 text-center">
-    <img class="rounded-circle mr-2" width="90" height="90" src="<%=iconbasePath%>${usr.meicon}">
+    <img class="rounded-circle mr-2" width="90" height="90" src="<%=basePath %>upload/icon/${usr.meicon}">
     <br>
     <br>
     <h4>${usr.meusername}</h4>

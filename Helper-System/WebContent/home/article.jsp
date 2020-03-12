@@ -70,7 +70,7 @@ SELECT * FROM article order by id desc;
     	<p class="text-center">${row.user}&nbsp·&nbsp${row.time}</p>
     	<p class="text-center"><i class="fa fa-flag"></i>&nbsp${row.addr}</p>
     	<p class="text-center">${row.text}</p>
-    	<p class="text-center"><img width="370px" src="<%=imgbasePath %>${row.img}" /></p>
+    	<p class="text-center"><img width="370px" src="<%=imgbasePath %>/Helper/upload/image/${row.img}" /></p>
       	</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>

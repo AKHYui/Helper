@@ -118,7 +118,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
       <div class="row">
     <div class="col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
-            <img width="130px" src="${row.icon}"
+            <img width="130px" src="<%=basePath %>upload/icon/${row.icon}"
                  alt="通用的占位符缩略图">
         </a>
     </div>

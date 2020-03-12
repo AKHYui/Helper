@@ -340,7 +340,7 @@ public class UseJdbc {
 		Statement stmt = null;
 		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		String sql = "INSERT INTO user (username,password,email,age,phone,sex,jieshao,birth,permit,icon) "
-				+ "VALUES ('"+username+"','"+password+"','0',"+age+",'"+phone+"','未知','这个人很懒，暂时还没有介绍',"+birth+",'入驻管理员','/Helper/upload/icon/icon.jpg')";
+				+ "VALUES ('"+username+"','"+password+"','0',"+age+",'"+phone+"','未知','这个人很懒，暂时还没有介绍',"+birth+",'入驻管理员','icon.jpg')";
 		stmt = conn.createStatement();
 		rs = stmt.executeUpdate(sql);
 		if(rs!=0){

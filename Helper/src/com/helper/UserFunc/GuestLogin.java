@@ -2,6 +2,7 @@ package com.helper.UserFunc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,13 @@ public class GuestLogin extends HttpServlet {
 		String se = "1";
 		HttpSession session = request.getSession();
 		
-		int i = UseJdbc.GuestLogin(username, password);
+		int i = 0;
+		try {
+			i = UseJdbc.GuestLogin(username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(i == 1){
 			response.getWriter().write("登陆成功,3秒后进入页面");
 			response.setHeader("refresh", "3;url="+basePath+"Helper/");
@@ -40,7 +47,7 @@ public class GuestLogin extends HttpServlet {
 			session.setAttribute("se", se);
 		}else{
 			response.getWriter().write("登陆失败,0秒后回到登陆");
-			response.setHeader("refresh", "0;url="+basePath+"Helper/pages/login.jsp");
+			response.setHeader("refresh", "0;url="+basePath+"Helper/IndexServlet");
 			session.setAttribute("0", username);
 		}
 		

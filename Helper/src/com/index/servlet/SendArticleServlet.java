@@ -16,12 +16,7 @@ import com.jdbc.support.UseJdbc;
 @WebServlet("/SendArticleServlet")
 public class SendArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		/*
-		String arttitle = new String(request.getParameter("arttitle").getBytes("ISO8859-1"),"UTF-8");
-		String artaddr = new String(request.getParameter("artaddr").getBytes("ISO8859-1"),"UTF-8");
-		String arttext = new String(request.getParameter("arttext").getBytes("ISO8859-1"),"UTF-8");
-		String filename = new String(request.getParameter("filename").getBytes("ISO8859-1"),"UTF-8");
-		*/
+		
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		String arttitle = (String) session.getAttribute("arttitle");
@@ -34,8 +29,8 @@ public class SendArticleServlet extends HttpServlet {
 		String path = request.getContextPath();
     	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
     			+ "/";
-    	String file_basePath = path+"/";
-    	filename = file_basePath+"upload/image/"+filename;
+    	//String file_basePath = path+"/";
+    	//filename = file_basePath+"upload/image/"+filename;
 		Date date = new Date();
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String nowtime = sf.format(date);

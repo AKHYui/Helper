@@ -45,7 +45,7 @@ SELECT * FROM user order by id desc;
                                     <tbody>
 <c:forEach begin="<%= begin_s%>" end="<%= end_s%>" var="row" items="${res_u.rows}">  
                                         <tr>
-                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="<%=imgbasePath%>${row.icon}">${row.username}</td>
+                                            <td><img class="rounded-circle mr-2" width="30" height="30" src="<%=imgbasePath%>Helper/upload/icon/${row.icon}">${row.username}</td>
                                             <td>${row.phone}</td>
                                             <td>${row.age}</td>
                                             <td>${row.permit}</td>
