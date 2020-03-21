@@ -2,6 +2,7 @@ package com.helper.UserFunc;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.jdbc.support.UseJdbc;
 
 @WebServlet("/GuestPostArticle")
 public class GuestPostArticle extends HttpServlet {
@@ -59,11 +62,28 @@ public class GuestPostArticle extends HttpServlet {
 					+ "<p>3秒后将回到上个页面</p>");
 			response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
 		}else{
+			int x = 0;
+			try {
+				x = UseJdbc.checktitle(arttitle);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(x == 1){
+				response.getWriter().write("<p>此标题已经被发布过，请换一个试试</p>"
+						+ "<p>3秒后将回到上个页面</p>");
+				response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
+			}else if(x == 2){
 			HttpSession session = request.getSession();
 			session.setAttribute("arttitle", arttitle);
 			session.setAttribute("artaddr", artaddr);
 			session.setAttribute("arttext", arttext);
 			request.getRequestDispatcher("home/module/send.jsp").forward(request, response);
+			}else{
+				response.getWriter().write("<p>发送失败</p>"
+						+ "<p>3秒后将回到上个页面</p>");
+				response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
+			}
 		}
 		
 	}

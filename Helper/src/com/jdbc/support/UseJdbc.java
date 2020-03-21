@@ -305,7 +305,25 @@ public class UseJdbc {
 		}
 	}
 	
-	//发送一条求助到数据库
+	//检查主题标题的单一性
+	public static int checktitle(String title) throws SQLException{
+		ResultSet rs = null;
+		Connection conn = null;
+		Statement stmt = null;
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		String sql = "SELECT * FROM article WHERE title = '"+title+"'";
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		if(rs.next()){
+			conn.close();
+			return 1;
+		}else{
+			conn.close();
+			return 2;
+		}
+	}
+	
+	//发送一条主题到数据库
 	public static int artadd(String username, String arttitle, String artaddr, String arttext, String filename, String nowtime) throws SQLException{
 		int rs = 0;
 		Connection conn = null;
@@ -325,7 +343,7 @@ public class UseJdbc {
 		
 	}
 	
-	//确定求助确实属于该用户
+	//确定主题确实属于该用户
 	public static int artuser(String username, int id) throws SQLException{
 		ResultSet rs = null;
 		Statement stmt = null;
@@ -345,7 +363,7 @@ public class UseJdbc {
 		
 	}
 	
-	//用户删除自己的求助
+	//用户删除自己的主题
 	public static int artdel(int id) throws SQLException{
 		int rs = 0;
 		Connection conn = null;
@@ -358,7 +376,7 @@ public class UseJdbc {
 		return 1;
 	}
 	
-	//根据求助主题来获取求助ID
+	//根据主题标题来获取主题ID
 	public static ResultSet tid(String atitle) throws SQLException{
 		ResultSet rs = null;
 		Connection conn = null;
@@ -403,7 +421,7 @@ public class UseJdbc {
 		return 1;
 	}
 	
-	//查询求助是否已经被收藏
+	//查询主题是否已经被收藏
 	public static int sefav(String username, String atitle) throws SQLException{
 		ResultSet rs = null;
 		Statement stmt = null;

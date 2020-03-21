@@ -40,7 +40,7 @@ public class AdminLoginServlet extends HttpServlet {
 		}
 		if(al == 1){
 			String ad = "admin";
-			System.out.println("管理员登陆成功");
+			System.out.println("管理员登录成功");
 			session.setAttribute("username", username);
 			session.setAttribute("ad", ad);
 			String site = new String(basePath + "IndexServlet");
@@ -56,20 +56,20 @@ public class AdminLoginServlet extends HttpServlet {
 			}
 			if(ral == 1){
 				String ad = "registadmin";
-				System.out.println("入驻管理员登陆成功");
+				System.out.println("入驻管理员登录成功");
 				session.setAttribute("username", username);
 				session.setAttribute("ad", ad);
 				String site = new String(basePath + "IndexServlet");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 			}else{
-				System.out.println("登陆失败");
+				System.out.println("登录失败");
 				String site = new String(basePath + "IndexServlet");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location", site);
 			}
 		}else{
-			System.out.println("登陆失败");
+			System.out.println("登录失败");
 			String site = new String(basePath + "IndexServlet");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location", site);

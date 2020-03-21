@@ -88,13 +88,6 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
     	<input type="text" class="form-control" name="addr" placeholder="至少3个字符，参考地点：<%=session.getAttribute("nowaddress")%>" id="addr"><br/>
       	<label for="text" class="control-label col-sm-4 col-sm-offset-1"><i class="fa fa-pencil"></i>&nbsp;求助内容:</label>
       	<textarea class="form-control" rows="10" id="text" placeholder="至少15个字符" name="text"></textarea>
-      	 <!-- 
-      	<label for="img" class="control-label col-sm-4 col-sm-offset-1">图片:</label>
-      	<div class="form-group">
-    		<label class="sr-only" for="inputfile">文件输入</label>
-    		<input type="file" name="uploadFile">
- 		 </div>
- 		  -->
       	</div>
       	<div class="modal-footer">
       <input type="submit" value="提交" class="btn btn-primary"></input>
@@ -106,7 +99,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
     </div>
   </div>
 </div>
-<!-- 查看信息用的模态框 结束 -->
+<!--模态框 结束 -->
 
             </div>
         </div>

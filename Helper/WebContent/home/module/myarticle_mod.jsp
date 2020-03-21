@@ -16,24 +16,18 @@ String mbasePath = request.getScheme()+"://"+request.getServerName()+":"+request
                         <p ><small><a class="text-muted" href="#">${myart.user}</a>·${myart.time}·${myart.addr}</small></p>
                         <p class="product">${myart.text}</p>
                         <div class="row">
-    						<!-- <div class="col-sm-12 col-md-12">
-        						<a href="#" class="thumbnail">
-            					<img width="300px" src="${row.img}"
-                 					alt="缩略图">
-        						</a> 
-    					</div> -->
 						</div>
                         <div><a href="<%=mbasePath %>ArticleServlet?id=${myart.id}"><button type="button" class="btn btn-default btn-sm" ><i class="fa fa-location-arrow"></i>&nbsp;查看</button></a>
                         <button type="button" data-toggle="modal" data-target="#DelAritcle${myart.id}" class="btn btn-default btn-sm"><i class="fa fa-times-circle"></i>&nbsp;删除</button></div>
                         
                         <!--弹窗 -->
-<!-- 查看信息用的模态框 -->
+<!-- 模态框 -->	
 <!-- Modal -->
 <div class="modal fade" id="DelAritcle${myart.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleModalLabel">删除求助</h5>
+        <h5 class="modal-title" id="titleModalLabel">删除主题</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -49,7 +43,7 @@ String mbasePath = request.getScheme()+"://"+request.getServerName()+":"+request
     </div>
   </div>
 </div>
-<!-- 查看信息用的模态框 结束 -->
+<!-- 模态框 结束 -->
                         
                         </div>
                     <div class="col-md-3">

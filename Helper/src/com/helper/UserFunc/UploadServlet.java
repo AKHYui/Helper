@@ -53,26 +53,22 @@ public class UploadServlet extends HttpServlet {
             return;
         }
  
-        // 配置上传参数
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        // 设置内存临界值 - 超过后将产生临时文件并存储于临时目录中
-        factory.setSizeThreshold(MEMORY_THRESHOLD);
-        // 设置临时存储目录
-        factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+        DiskFileItemFactory factory = new DiskFileItemFactory();  // 配置上传参数
+        
+        factory.setSizeThreshold(MEMORY_THRESHOLD);  // 设置内存临界值
+        
+        factory.setRepository(new File(System.getProperty("java.io.tmpdir")));  // 设置临时存储目录
  
         ServletFileUpload upload = new ServletFileUpload(factory);
          
-        // 设置最大文件上传值
-        upload.setFileSizeMax(MAX_FILE_SIZE);
+        upload.setFileSizeMax(MAX_FILE_SIZE);  // 设置最大文件上传值
          
-        // 设置最大请求值 (包含文件和表单数据)
-        upload.setSizeMax(MAX_REQUEST_SIZE);
+        upload.setSizeMax(MAX_REQUEST_SIZE);  // 设置最大请求值
         
-        // 中文处理
-        upload.setHeaderEncoding("UTF-8"); 
+        upload.setHeaderEncoding("UTF-8");   // 中文处理
 
-        // 构造临时路径来存储上传的文件
-        // 这个路径相对当前应用的目录
+        // 构造临时路径来存储上传的文件 这个路径相对当前应用的目录
+
         String uploadPath = getServletContext().getRealPath("/") + File.separator + UPLOAD_DIRECTORY;
        
          
@@ -102,7 +98,7 @@ public class UploadServlet extends HttpServlet {
                         String fileendv = String.valueOf(fileName);
                         String fileend = fileendv.substring(fileendv.length() -3,fileendv.length());
                         System.out.println(fileend);
-                        if(fileend.equals(jpg)==true || fileend.equals(png)==true){
+                        if(fileend.equals(jpg)==true || fileend.equals(png)==true || fileend.equals(gif)==true){
                         
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);
@@ -125,30 +121,6 @@ public class UploadServlet extends HttpServlet {
                         String site = new String(basePath+"/SendArticleServlet");
                 		response.setStatus(response.SC_MOVED_TEMPORARILY);
                 		response.setHeader("Location", site);
-                        }else if(fileend.equals(gif)==true){
-                        	// 在控制台输出文件的上传路径
-                            System.out.println(filePath);
-                            System.out.println(username);
-                            // 保存文件到硬盘
-                            item.write(storeFile);
-                            request.setAttribute("title",
-                                arttitle);
-                            request.setAttribute("addr",
-                                    artaddr);
-                            request.setAttribute("text",
-                                    arttext);
-                            request.setAttribute("filename",
-                                    "/Helper/upload/image/"+fileName);
-                            
-                            session.setAttribute("filename", fileName);
-                            
-                            //跳转到SendArticleServlet
-                            String path = request.getContextPath();
-                        	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
-                        			+ "/";
-                            String site = new String(basePath+"/SendArticleServlet");
-                    		response.setStatus(response.SC_MOVED_TEMPORARILY);
-                    		response.setHeader("Location", site);
                         }else{
                         	String path = request.getContextPath();
                         	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path

@@ -19,7 +19,7 @@ import com.jdbc.support.UseJdbc;
 
 @WebServlet("/MyFastModServlet")
 public class MyFastModServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
@@ -76,22 +76,12 @@ public class MyFastModServlet extends HttpServlet {
 			String fastmodkey = "<h4>我的求助：</h4>";
 			request.setAttribute("key_list",list);
 			session.setAttribute("fastmodkey", fastmodkey);
-		try {
 			request.getRequestDispatcher("home/fastmod/myfastmod.jsp").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		}else{
 			String fastmodkey = "<h4 class= text-center>您暂时没有发布</h4>";
 			request.setAttribute("key_list",list);
 			session.setAttribute("fastmodkey", fastmodkey);
-			try {
-				request.getRequestDispatcher("home/fastmod/myfastmod.jsp").forward(request, response);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			request.getRequestDispatcher("home/fastmod/myfastmod.jsp").forward(request, response);
 		}
 	}else{
 		String site = new String(basePath + "IndexServlet");

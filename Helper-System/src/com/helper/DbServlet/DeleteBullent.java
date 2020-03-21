@@ -29,7 +29,12 @@ public class DeleteBullent extends HttpServlet {  //É¾³ý¹«¸æ
 		String username_se = (String) session.getAttribute("username");
 		String ad = (String) session.getAttribute("ad");
 		if(username_se.equals("admin")==true || ad.equals("registadmin")==true){
-		rs = UseJdbc.debu(id);
+		try {
+			rs = UseJdbc.debu(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			if (rs != 0) {
 				String info = "OK";
 				session.setAttribute("info", info);

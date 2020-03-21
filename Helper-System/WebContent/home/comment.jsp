@@ -22,10 +22,10 @@
 SELECT * FROM comment order by id desc;
 </sql:query>
  <div class="container-fluid">
-                    <h3 class="text-dark mb-4">评论</h3>
+                    <h3 class="text-dark mb-4">应答</h3>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 font-weight-bold">评论管理</p>
+                            <p class="text-primary m-0 font-weight-bold">应答管理</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -33,9 +33,9 @@ SELECT * FROM comment order by id desc;
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>评论主题</th>
-                                            <th>评论人</th>
-                                            <th>评论内容</th>
+                                            <th>应答主题</th>
+                                            <th>应答人</th>
+                                            <th>应答内容</th>
                                             <th>时间</th>
                                             <th>删除</th>
                                         </tr>

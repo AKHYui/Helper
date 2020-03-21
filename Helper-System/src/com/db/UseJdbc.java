@@ -81,35 +81,15 @@ public class UseJdbc {
 		
 	}
 	//删除公告
-	public static int debu(String id){
+	public static int debu(String id) throws SQLException{
 		int rs = 0;
 		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		String sql = "DELETE FROM bulletin WHERE Id = '" + id + "'";
 		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs = stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
 		return rs;
 	}
 	//删除评论
@@ -145,35 +125,15 @@ public class UseJdbc {
 		return rs;
 	}
 	//添加公告
-	public static int inbu(String text, String time){
+	public static int inbu(String text, String time) throws SQLException{
 		int rs = 0;
 		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		String sql = "INSERT INTO bulletin (text,time) VALUES ('"+text+"','"+time+"') ";
 		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			rs = stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		stmt = conn.createStatement();
+		rs = stmt.executeUpdate(sql);
+		conn.close();
 		return rs;
 	}
 	//编辑用户

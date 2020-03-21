@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li class="nav-item" role="presentation"><a class="nav-link" href="<%=basePath%>FastModServlet"><i class="fas fa-rocket"></i><span>求助管理</span></a></li>
                     <li class="nav-item" role="presentation"></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="<%=basePath%>ArticleServlet"><i class="fas fa-edit"></i><span>发布管理</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="<%=basePath%>CommentServlet"><i class="fas fa-comment"></i><span>评论管理</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="<%=basePath%>CommentServlet"><i class="fas fa-comment"></i><span>应答管理</span></a></li>
                 </ul>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>

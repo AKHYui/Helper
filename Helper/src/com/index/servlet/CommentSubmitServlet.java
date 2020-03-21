@@ -20,7 +20,7 @@ public class CommentSubmitServlet extends HttpServlet {
 		String atitle = request.getParameter("atitle");
 		String sid = request.getParameter("sid");
 		Date date = new Date();
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String nowtime = sf.format(date);
 		String path = request.getContextPath();
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
@@ -51,7 +51,7 @@ public class CommentSubmitServlet extends HttpServlet {
 		}
 	}else{
 		try {
-			response.getWriter().write("评论不能为空");
+			response.getWriter().write("应答不能为空");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
