@@ -41,13 +41,13 @@ public class GuestLogin extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(i == 1){
-			response.getWriter().write("登陆成功,3秒后进入页面");
+			response.getWriter().write("登录成功,3秒后进入页面");
 			response.setHeader("refresh", "3;url="+basePath+"Helper/");
 			session.setAttribute("username", username);
 			session.setAttribute("se", se);
 		}else{
-			response.getWriter().write("登陆失败,0秒后回到登陆");
-			response.setHeader("refresh", "0;url="+basePath+"Helper/IndexServlet");
+			response.getWriter().write("登录失败,3秒后回到登录");
+			response.setHeader("refresh", "3;url="+basePath+"Helper/IndexServlet");
 			session.setAttribute("0", username);
 		}
 		

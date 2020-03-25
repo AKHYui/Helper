@@ -51,7 +51,7 @@ public class GuestRegist extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(i == 1){
-			response.getWriter().write("注册成功，3秒后进入登陆页面");
+			response.getWriter().write("注册成功，3秒后进入登录页面");
 			response.setHeader("refresh", "3;url="+basePath+"IndexServlet");
 		}else if(i == 0){
 			response.getWriter().write("该用户名已被注册");
