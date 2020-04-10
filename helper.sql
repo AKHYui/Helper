@@ -11,7 +11,7 @@
  Target Server Version : 50515
  File Encoding         : 65001
 
- Date: 25/03/2020 11:57:46
+ Date: 10/04/2020 17:34:51
 */
 
 SET NAMES utf8mb4;
@@ -31,7 +31,7 @@ CREATE TABLE `article`  (
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user`(`user`(191)) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of article
@@ -120,7 +120,12 @@ CREATE TABLE `favorite`  (
   `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `atitle` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of favorite
+-- ----------------------------
+INSERT INTO `favorite` VALUES (1, 'user1000', '欢迎使用');
 
 -- ----------------------------
 -- Table structure for user
@@ -147,7 +152,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 INSERT INTO `user` VALUES (0001, 'admin', 'admin', '591276457@qq.com', 0, '6128880580', '男', '这个人很懒，暂时还没有介绍', '2020', '管理员', 'icon.jpg');
 INSERT INTO `user` VALUES (0044, 'user1', '123', '987654321@helper.com', 20, '13656565656', '未知', '这个是自我介绍', '2000', '用户', 'icon.jpg');
-INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin123@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', 'timg1597.jpg');
+INSERT INTO `user` VALUES (0045, 'lin', '123', 'lin123@qq.com', 20, '17000000000', '男', '这个人很懒，暂时还没有介绍', '2000', '用户', '好好好妳胸大妳讲.jpg');
 INSERT INTO `user` VALUES (0047, 'user1000', '123', '12345678@qq.com', 23, '13712345678', '保密', '这个人很懒，暂时还没有介绍', '1997', '用户', '449724.jpg');
 
 SET FOREIGN_KEY_CHECKS = 1;

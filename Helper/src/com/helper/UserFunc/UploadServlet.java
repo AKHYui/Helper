@@ -25,7 +25,7 @@ public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
      
     // 上传文件存储目录
-    private static final String UPLOAD_DIRECTORY = "upload\\image";
+    private static final String UPLOAD_DIRECTORY = "upload/image";
  
     // 上传配置
     private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
