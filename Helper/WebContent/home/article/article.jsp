@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <div data-aos="fade-up">
         <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean-button" style="height:80px;background-color:#37434d;color:#ffffff;">
-            <div class="container-fluid"><a class="navbar-brand" href="<%=basePath%>IndexServlet"><i class="fa fa-chevron-left"></i>&nbsp;返回</a>
+            <div class="container-fluid"><a class="navbar-brand" href="<%=request.getHeader("Referer")%>"><i class="fa fa-chevron-left"></i>&nbsp;返回</a>
                 <div
                     class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
@@ -60,9 +60,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <div class="intro">
                         <h1 class="text-center"><%=title %></h1>
-                        <p class="text-center"><span class="by">by</span> <a href="<%=basePath%>UserMessage?user=<%=user%>"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p><img class="img-fluid" src="<%=basePath %>upload/image/<%=img %>"></div>
+                        <p class="text-center"><span class="by">by</span> <a href="<%=basePath%>UserMessage?user=<%=user%>"><%=user%></a><span class="date"><%=time %> </span>&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fa fa-flag"></i>${addr}</span></p>
+                        <div class="text-center">
+                        <img class="img-fluid" src="<%=basePath %>upload/image/<%=img %>">
+                        </div>
+                        </div>
                     <div class="text">
-                        <p><%=text %></p>
+                        <code><%=text %></code>
                     </div>
                     <hr/>
                     <div>
