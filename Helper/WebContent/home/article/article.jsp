@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         </div>
                     <div class="text">
-                        <code><%=text %></code>
+                        <code class="text-dark" style="font-size:18px"><%=text %></code>
                     </div>
                     <hr/>
                     <div>
