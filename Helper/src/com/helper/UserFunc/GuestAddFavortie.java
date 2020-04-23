@@ -1,3 +1,6 @@
+/*
+ * 负责添加收藏
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

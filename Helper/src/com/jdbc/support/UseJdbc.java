@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 import com.jdbc.support.JdbcUtil;
 /*
- * 这里是JavaBean部分
+ * 这里是负责对数据库操作的代码
  */
 
 public class UseJdbc {

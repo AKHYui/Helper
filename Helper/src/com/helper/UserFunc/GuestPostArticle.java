@@ -1,3 +1,6 @@
+/*
+ * 负责用户发布主题
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

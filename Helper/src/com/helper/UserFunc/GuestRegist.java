@@ -1,3 +1,6 @@
+/*
+ * 负责用户注册
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

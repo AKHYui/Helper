@@ -1,3 +1,6 @@
+/*
+ * 快速求助页面
+ */
 package com.index.servlet;
 
 import java.io.IOException;

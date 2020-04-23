@@ -1,3 +1,7 @@
+/*
+ * UseApiKey方法负责组合网址 并调用IpCheck.doGetStr
+ * getak方法负责检查key的有效情况
+ */
 package api.baidu.ip;
 
 import java.sql.ResultSet;

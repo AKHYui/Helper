@@ -1,3 +1,6 @@
+/*
+ * 负责更新头像
+ */
 package com.helper.UserFunc;
 
 import java.io.File;

@@ -1,3 +1,6 @@
+/*
+ * 更新头像页面
+ */
 package com.index.servlet;
 
 import java.io.IOException;

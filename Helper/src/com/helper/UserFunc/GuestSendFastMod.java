@@ -1,3 +1,6 @@
+/*
+ * 负责发布求助
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

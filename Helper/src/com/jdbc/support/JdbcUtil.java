@@ -1,3 +1,6 @@
+/*
+ * Jdbc–≈œ¢
+ */
 package com.jdbc.support;
 
 public class JdbcUtil {

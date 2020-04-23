@@ -1,3 +1,6 @@
+/*
+ * SessionDel负责登出用户 注销掉所有session值
+ */
 package com.helper.Session;
 
 import javax.servlet.annotation.WebServlet;

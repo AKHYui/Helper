@@ -1,3 +1,7 @@
+/*
+ * doGetStr方法负责向百度地图API提交Get请求 得到JSON结果
+ * GetData方法负责从JSON中取得重要数据
+ */
 package api.baidu.ip;
 
 import java.io.IOException;

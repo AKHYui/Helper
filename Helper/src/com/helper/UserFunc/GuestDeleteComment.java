@@ -1,3 +1,6 @@
+/*
+ * 负责用户删除应答
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

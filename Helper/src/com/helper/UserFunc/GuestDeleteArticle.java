@@ -1,3 +1,6 @@
+/*
+ * 负责用户删除主题
+ */
 package com.helper.UserFunc;
 
 import java.io.IOException;

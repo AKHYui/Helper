@@ -1,3 +1,6 @@
+/*
+ * 我的收藏页面
+ */
 package com.index.servlet;
 
 import java.io.IOException;

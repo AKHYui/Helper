@@ -1,3 +1,6 @@
+/*
+ * 负责上传主题图片
+ */
 package com.helper.UserFunc;
 
 import java.io.File;
