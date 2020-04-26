@@ -39,7 +39,7 @@ SELECT icon from user where username="<%= session.getAttribute("username")%>" ;
                 <li class="sidebar-brand">
                 <div id="wrap">
                 <c:forEach var="row_i" items="${result.rows}">
-                <div id="icon"><img width="30px" src="<%=basePath %>upload/icon/${row_i.icon}"></div>
+                <div id="icon"><img class="rounded-circle mr-2" width="30" height="30" src="<%=basePath %>upload/icon/${row_i.icon}"></div>
                 </c:forEach>
 				<div id="user"><a href="#"><%= session.getAttribute("username")%> </a></div>
 				</div></li>

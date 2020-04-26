@@ -32,7 +32,6 @@ SELECT * FROM fastmod order by id desc;
                                     <thead>
                                         <tr>
                                             <th>求助人</th>
-                                            <th>内容</th>
                                             <th>接单人</th>
                                             <th>时间</th>
                                             <th>状态</th>
@@ -44,7 +43,6 @@ SELECT * FROM fastmod order by id desc;
 
                                         <tr>
                                             <td>${row.user}</td>
-                                            <td>${row.text}</td>
                                             <td>${row.helper}</td>
                                             <td>${row.time}</td>
                                             <td>${row.status}</td>

@@ -27,7 +27,7 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
     <div class="input-group-prepend">
       <span class="input-group-text">邮箱</span>
     </div>
-    <input type="text" name="email" class="form-control" value="${row.email}">
+    <input type="email" name="email" class="form-control" value="${row.email}">
   </div>
 <br/>
 <div class="input-group mb-3">
@@ -118,8 +118,8 @@ SELECT * from user where username="<%= session.getAttribute("username")%>" ;
       <div class="row">
     <div class="col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
-            <img width="130px" src="<%=basePath %>upload/icon/${row.icon}"
-                 alt="通用的占位符缩略图">
+            <img class="rounded-circle mr-2" width="160" height="160" 
+            src="<%=basePath %>upload/icon/${row.icon}" alt="头像显示效果">
         </a>
     </div>
      <div class="col-sm-6 col-md-9">

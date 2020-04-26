@@ -56,6 +56,12 @@ public class UploadServlet extends HttpServlet {
             return;
         }
  
+        
+        response.setContentType("text/html;charset=UTF-8");	
+        String path = request.getContextPath();
+    	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
+    			+ "/";
+        
         DiskFileItemFactory factory = new DiskFileItemFactory();  // 配置上传参数
         
         factory.setSizeThreshold(MEMORY_THRESHOLD);  // 设置内存临界值
@@ -98,6 +104,11 @@ public class UploadServlet extends HttpServlet {
                         String jpg = "jpg";
                         String png = "png";
                         String gif = "gif";
+                        if(fileName.equals("")){
+                        	System.out.println("上传失败，数据为空");
+                        	response.getWriter().write("请先选择一个图片");
+                        	response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
+                        }else{
                         String fileendv = String.valueOf(fileName);
                         String fileend = fileendv.substring(fileendv.length() -3,fileendv.length());
                         System.out.println(fileend);
@@ -118,16 +129,12 @@ public class UploadServlet extends HttpServlet {
                                 "/Helper/upload/image/"+fileName);
                         session.setAttribute("filename", fileName);
                         //跳转到SendArticleServlet
-                        String path = request.getContextPath();
-                    	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
-                    			+ "/";
+                        
                         String site = new String(basePath+"/SendArticleServlet");
                 		response.setStatus(response.SC_MOVED_TEMPORARILY);
                 		response.setHeader("Location", site);
                         }else{
-                        	String path = request.getContextPath();
-                        	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
-                        			+ "/";
+                        	
                         	response.getWriter().write("Only support jpg,png,gif picture!!!");
                         	response.setHeader("refresh", "3;url="+basePath+"MyArticleServlet");
                         	System.out.println("不支持文件类型");
@@ -136,6 +143,7 @@ public class UploadServlet extends HttpServlet {
                         }
                     }
                 }
+            }
             
         } catch (Exception ex) {
             request.setAttribute("message",
