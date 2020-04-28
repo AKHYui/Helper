@@ -14,10 +14,10 @@ import com.jdbc.support.JdbcUtil;
 
 public class UseJdbc {
 	private static final long serialVersionUID = 1L;
-	static final String JDBC_DRIVER = JdbcUtil.getDriver();
-	static final String DB_URL = JdbcUtil.getUrl();
-	static final String USER = JdbcUtil.getUser();
-	static final String PASS = JdbcUtil.getPwd();
+	private static String JDBC_DRIVER = JdbcUtil.getDriver();
+	private static String DB_URL = JdbcUtil.getUrl();
+	private static String USER = JdbcUtil.getUser();
+	private static String PASS = JdbcUtil.getPwd();
 	//и╬ЁЩндуб
 	public static int delar(String id){
 		int rs = 0;
