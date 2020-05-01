@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import api.baidu.ip.DoApi;
 import api.baidu.ip.IpCheck;
+import api.baidu.ip.Reverse;
 import api.baidu.ip.UseApi;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
@@ -42,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else{
-			
+			/*
 			String ak = "";
 			
 			try {
@@ -51,12 +53,25 @@ public class LoginServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			String userip = request.getRemoteAddr();//记得改回来
-			//String userip = "118.74.119.220";
+			String userip = request.getRemoteAddr();
+			
+			//String userip = request.getRemoteAddr();//记得改回来
+			String userip = "118.74.119.220";
 			String json_s = UseApi.UseApiKey(ak, userip);
-			String addr = IpCheck.GetData(json_s);
-			System.out.println(addr);
+			String json_r = IpCheck.GetData(json_s);
+			System.out.println(json_r);
+			if(json_r.equals("0") == true){
+				String addr = "API错误或管理员关闭了API";
+				session.setAttribute("nowaddress", addr);
+			}else{
+				String addr = Reverse.Getaddr(json_r);
+				session.setAttribute("nowaddress", addr);
+			}
+			
+			DoApi doapi = new DoApi();
+			String addr = doapi.doMapApi(ak,userip);
 			session.setAttribute("nowaddress", addr);
+			*/
 			try {
 				request.getRequestDispatcher("home/index.jsp").forward(request, response);
 			} catch (ServletException e) {

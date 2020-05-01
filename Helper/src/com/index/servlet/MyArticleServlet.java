@@ -20,6 +20,9 @@ import javax.servlet.http.HttpSession;
 
 import com.jdbc.support.UseJdbc;
 
+import api.baidu.ip.DoApi;
+import api.baidu.ip.UseApi;
+
 @WebServlet("/MyArticleServlet")
 public class MyArticleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -33,6 +36,17 @@ public class MyArticleServlet extends HttpServlet {
 		System.out.println(username);
 		List<Map> list =new ArrayList<Map>();//创建list集合用于存入map的键值对集合
 		if(username != null){
+			String ak = "";
+			try {
+				ak = UseApi.getak();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String userip = request.getRemoteAddr();
+			DoApi doapi = new DoApi();
+			String nowaddr = doapi.doMapApi(ak,userip);
+			session.setAttribute("nowaddress", nowaddr);
 			ResultSet myart = null;
 			try {
 				myart = UseJdbc.myart(username);

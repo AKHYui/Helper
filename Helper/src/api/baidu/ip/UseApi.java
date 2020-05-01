@@ -21,6 +21,16 @@ public class UseApi {
 		System.out.println(json_s);
 		return json_s;
 	}
+	public static String doReverse(String ak, String x, String y){
+		String url = "http://api.map.baidu.com/reverse_geocoding/"
+				+ "v3/?ak="+ak+"&output=json&coordtype=wgs84ll&"
+				+ "location="+y+","+x+"";
+		JSONObject json = Reverse.doGetStr(url);
+		String json_r = json.toString();
+		System.out.println(url);
+		System.out.println(json_r);
+		return json_r;
+	}
 	public static String getak() throws SQLException{
 		int i = 0;
 		i = UseJdbc.checkstatus();
