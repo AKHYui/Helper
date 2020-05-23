@@ -28,7 +28,7 @@ SELECT * FROM user order by id desc;
                     <h3 class="text-dark mb-4">用户</h3>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 font-weight-bold">用户管理  <button type="button" data-toggle="modal" data-target="#addadmin" <%=button %> class="btn btn-primary btn-sm">新增管理</button></p>
+                            <p class="text-primary m-0 font-weight-bold">用户管理  <button type="button" data-toggle="modal" data-target="#addadmin" <%=button %> class="btn btn-primary btn-sm">新增入驻</button></p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -121,7 +121,7 @@ SELECT * FROM user order by id desc;
   	<form action="<%=basePath%>AddAdmin" method="post" class="form-horizontal">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleModalLabel">新增入驻管理</h5>
+        <h5 class="modal-title" id="titleModalLabel">新增入驻</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

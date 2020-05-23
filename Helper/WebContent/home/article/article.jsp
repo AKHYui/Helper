@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         </div>
                     <div class="text">
-                        <code class="text-dark" style="font-size:18px"><%=text %></code>
+                        <code class="text-dark" style="font-size:18px;white-space:pre-wrap"><%=text %></code>
                     </div>
                     <hr/>
                     <div>
@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			<div id="text"><p class="font-weight-bold">${usr.cuser}</p></div>&nbsp;&nbsp;&nbsp;&nbsp;
         			<div id="time"><p>${usr.ctime}</p></div>
         			<div class="text">
-                        <code class="text-dark" style="font-size:17px">${usr.ctext}</code>
+                        <code class="text-dark" style="font-size:17px;white-space:pre-wrap">${usr.ctext}</code>
                     </div>
         			</div>
         			<hr/>

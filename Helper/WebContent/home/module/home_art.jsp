@@ -24,7 +24,7 @@ SELECT * from article order by id desc;
                         <p class="product">${row.text}</p>
                         <div class="row">
 						</div>
-                        <div><a href="<%=mbasePath %>ArticleServlet?id=${row.id}"><button type="button" class="btn btn-default btn-sm" ><i class="fa fa-location-arrow"></i>&nbsp;查看</button></a>
+                        <div><a href="<%=mbasePath %>ArticleServlet?id=${row.id}" target="_blank"><button type="button" class="btn btn-default btn-sm" ><i class="fa fa-location-arrow"></i>&nbsp;查看</button></a>
                         <a href="<%=mbasePath%>GuestAddFavorite?title=${row.title}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-star"></i>&nbsp;收藏</button></a></div>
                         </div>
                     </div>
